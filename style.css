@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: nowrap;
-    gap: 60px; /
+    gap: 60px;
 }
 
     /* Each column */
@@ -21,13 +21,13 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        text-align: left; 
+        text-align: left;
     }
 
 /* Logo column */
 .footer-logo img {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 130px;
 }
 
@@ -43,6 +43,7 @@
 .footer-social h4 {
     margin: 0 0 12px 0;
     font-weight: 700;
+    padding-top: 20px;
     font-size: 16px;
 }
 
@@ -63,6 +64,7 @@
     font-size: 15px;
     opacity: 0.6;
     transition: opacity 0.2s;
+    padding-top: 20px;
 }
 
     .footer-social a:hover {
