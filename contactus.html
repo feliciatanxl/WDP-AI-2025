@@ -1,14 +1,12 @@
-﻿<!--Website Reference: https://meod.com.sg/-->
-<!--3rd Party Website: https://take.app/meodfresh-->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage - AI</title>
+    <title>Contact Us</title>
     <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png"> <!-- Website Icon on tab -->
     <link rel="stylesheet" href="footer.css" /> <!-- Footer Link -->
-    <link rel="stylesheet" href="header.css"/> <!-- Header Link -->
+    <link rel="stylesheet" href="header.css" /> <!-- Header Link -->
     <link rel="stylesheet" href="style.css" /> <!-- StyleSheet Link-->
 </head>
 <body>
@@ -23,6 +21,24 @@
             <li><a href="contactus.html">Contact Us</a></li>
         </ul>
     </nav>
+    <section>
+        <form id="contactForm">
+            <div>
+                <label>Name</label>
+                <input type="text" name="name" required />
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" required />
+            </div>
+            <div>
+                <label>Message</label>
+                <textarea name="message" rows="4" maxlength="700" required></textarea>
+                <div>0 / 700</div>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </section>
     <!-- Footer Menu --> <!-- Can consider a footer sitemap with some other information -->
     <footer>
         <div class="footer-container">
