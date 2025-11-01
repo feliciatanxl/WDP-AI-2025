@@ -11,8 +11,7 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: nowrap;
-    gap: 60px;
-    /
+    gap: 150px;
 }
 
     /* Each column */
