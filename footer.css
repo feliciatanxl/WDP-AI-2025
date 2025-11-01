@@ -11,7 +11,8 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: nowrap;
-    gap: 60px; 
+    gap: 60px;
+    /
 }
 
     /* Each column */
@@ -28,7 +29,7 @@
 .footer-logo img {
     display: block;
     margin-bottom: 10px;
-    width: 130px; 
+    width: 130px;
 }
 
 .footer-logo p {
