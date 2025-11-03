@@ -49,3 +49,6 @@ footer {
         z-index: 2;
     }
 
+.container text-center{
+    background-image:url('image/2.jpg');
+}
