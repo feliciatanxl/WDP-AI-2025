@@ -57,7 +57,7 @@
                     <div>
                         <label>Message</label>
                         <textarea name="message" rows="4" maxlength="700" required></textarea>
-                        <div>0 / 700</div> <!--JS Interaction for the char count-->
+                        <div>0 / 700</div> 
                     </div>
                     <button type="submit">Send</button>
                 </form>
@@ -106,13 +106,10 @@
             const nav = document.querySelector('.navbar.fixed-top') || document.querySelector('.navbar');
             const h = nav ? nav.offsetHeight + 70 : 70;
             console.log('Navbar found:', !!nav, 'height:', h);
-            // Apply padding directly to body to avoid specificity issues
             document.body.style.paddingTop = h + 'px';
 
-            // Also ensure main isn't using a conflicting top margin/padding
             const main = document.querySelector('main');
             if (main) {
-                // remove inline margin-top/padding-top if present (helps avoid double offsets)
                 main.style.marginTop = null;
                 main.style.paddingTop = null;
             }
