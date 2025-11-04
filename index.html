@@ -32,56 +32,58 @@
         </div>
     </nav>
     <main class="page-content">
-        <!-- Hero Section (Bootstrap Carousel) -->
-        <div id="farmCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#farmCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#farmCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#farmCarousel" data-bs-slide-to="2"></button>
+        <!-- Hero Slider Section -->
+        <section class="hero-section">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <!-- Slides -->
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <img src="image/1.jpg" class="d-block w-100 hero-img" alt="Slide 1">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h1 class="fw-bold">Join us at Badminton CCA!</h1>
+                            <p>Where passion meets discipline. Unleash your inner athlete.</p>
+                            <a href="contact.html" class="btn btn-hero">Join Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <img src="image/2.jpg" class="d-block w-100 hero-img" alt="Slide 2">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h1 class="fw-bold">Train with the Best</h1>
+                            <p>Professional coaching and friendly community await.</p>
+                            <a href="contact.html" class="btn btn-hero">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <img src="image/3.jpg" class="d-block w-100 hero-img" alt="Slide 2">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h1 class="fw-bold">Train with the Best</h1>
+                            <p>Professional coaching and friendly community await.</p>
+                            <a href="contact.html" class="btn btn-hero">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
-
-            <!-- Slides -->
-            <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <img src="image/1.jpg" class="d-block w-100 hero-img" alt="Fresh Produce">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h1 class="fw-bold">Fresh from Our Local Farm</h1>
-                        <p>Supporting sustainability and healthy living.</p>
-                        <a href="#" class="btn btn-hero">Learn More</a>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <img src="image/2.jpg" class="d-block w-100 hero-img" alt="Organic Vegetables">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h1 class="fw-bold">Naturally Grown, Locally Loved</h1>
-                        <p>Organic produce handpicked for you.</p>
-                        <a href="#" class="btn btn-hero">Our Produce</a>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <img src="#" class="d-block w-100 hero-img" alt="Farm Team">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h1 class="fw-bold">From Our Fields to Your Table</h1>
-                        <p>Fresh, local, and sustainable farming.</p>
-                        <a href="contact.html" class="btn btn-hero">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#farmCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#farmCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
+        </section>
     </main>
     <!-- Footer -->
     <footer class="custom-footer">

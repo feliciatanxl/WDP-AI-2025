@@ -115,7 +115,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover; 
-    filter: brightness(70%);
+    filter: brightness(70%) saturate(120%);
 }
 
 .carousel-caption {
@@ -135,7 +135,8 @@ body {
     #farmCarousel,
     .carousel-inner,
     .carousel-item {
-        height: 70vh; 
+        height: 70vh;
+    }
 
     .hero-img {
         height: 100%;
