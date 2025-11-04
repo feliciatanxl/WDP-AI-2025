@@ -150,3 +150,8 @@ body {
         font-size: 1rem;
     }
 }
+
+.social-icon:hover {
+    color: #007bff;
+    transition: color 0.2s ease;
+}
