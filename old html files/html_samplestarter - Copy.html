@@ -18,21 +18,17 @@
         <!-- Navigation Bar --> <!-- Can consider doing a transparent bg with scrolldown white bg, png logo(a link to home) -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <!-- Hamburger Menu Button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand fw-bold text-primary" href="index.html">Titans Badminton CCA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <!-- Collapsible Menu -->
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">Our Produce</a></li>
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">Our Brands</a></li>
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">Articles</a></li>
-                        <li class="nav-item"><a class="nav-link fw-bold" href="#">Contact Us</a></li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="training.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="team.html">Our Produce</a></li>
+                        <li class="nav-item"><a class="nav-link" href="competition.html">Our Brands</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">Articles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,7 +53,7 @@
                     <div>
                         <label>Message</label>
                         <textarea name="message" rows="4" maxlength="700" required></textarea>
-                        <div>0 / 700</div> 
+                        <div>0 / 700</div>
                     </div>
                     <button type="submit">Send</button>
                 </form>
