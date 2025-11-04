@@ -83,3 +83,15 @@ body {
         padding-right: 30px;
     }
 }
+
+.btn-custom {
+    background-color: #46c8dc;
+    border-color: #46c8dc;
+    color: white;
+}
+
+    .btn-custom:hover {
+        background-color: #5ec8dc;
+        border-color: #5ec8dc;
+        color: white;
+    }
