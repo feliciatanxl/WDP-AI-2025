@@ -30,8 +30,7 @@
 }
 
 /* Titles */
-.footer-info h5,
-.footer-socials h5 {
+.footer-info h5 {
     font-weight: 700;
     font-size: 16px;
     margin-bottom: 5px;
@@ -44,6 +43,10 @@
     font-size: 15px;
     color: #333;
     line-height: 1.4;
+}
+
+.footer-socials {
+    margin-top: 15px
 }
 
 /* Social links */
