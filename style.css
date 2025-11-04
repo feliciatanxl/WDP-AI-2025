@@ -1,4 +1,4 @@
-﻿/* 1) Page setup for sticky footer */
+﻿
 html, body {
     height: 100%;
     margin: 0;
@@ -6,48 +6,48 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* Make body a column flex container so footer is pushed to bottom */
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Main content area that grows to fill available space */
+
 .page-content {
-    flex: 1 0 auto; /* expand to fill available space */
+    flex: 1 0 auto; 
     box-sizing: border-box;
-    padding-top: 90px; /* offset for your fixed-top navbar: adjust as needed */
-    padding-left: 80px; /* matches your footer padding for visual alignment */
+    padding-top: 90px; 
+    padding-left: 80px; 
     padding-right: 80px;
 }
 
-/* Optional: container width constraint for content */
+
 .container-main {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* 2) Navbar tweaks (fixed-top) */
+
 .navbar {
     transition: background-color 0.25s, box-shadow 0.25s;
 }
 
-    /* Start transparent (if you want). If you want solid white from the start, remove this */
+
     .navbar.bg-transparent {
         background-color: transparent !important;
         box-shadow: none;
     }
 
-    /* Scrolled state — solid background and subtle shadow */
+
     .navbar.scrolled {
         background-color: #ffffff !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
-/* Ensure navbar brand image fits nicely */
+
 .navbar-brand img {
-    height: 60px; /* adjust as needed */
+    height: 60px;
     width: auto;
     display: block;
 }
@@ -71,7 +71,6 @@ body {
     }
 }
 
-/* Small helper to keep layout consistent with footer padding */
 .site-padding {
     padding-left: 80px;
     padding-right: 80px;
@@ -95,3 +94,50 @@ body {
         border-color: #5ec8dc;
         color: white;
     }
+
+/* HERO SECTION SLIDER */
+.hero-img {
+    height: 80vh;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.btn-hero {
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-hero:hover {
+        background-color: #3e8e41;
+    }
+
+@media (max-width: 768px) {
+    .hero-img {
+        height: 60vh;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.8rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+}
