@@ -58,19 +58,19 @@ body {
 
 /* ----------------- Buttons ----------------- */
 .btn-custom {
-    background-color: #46c8dc;
-    border-color: #46c8dc;
+    background-color: #008037;
+    border-color: #008037;
     color: white;
 }
 
     .btn-custom:hover {
-        background-color: #5ec8dc;
-        border-color: #5ec8dc;
+        background-color: #5caf38;
+        border-color: #5caf38;
         color: white;
     }
 
 .btn-hero {
-    background-color: #4CAF50;
+    background-color: #008037;
     border: none;
     color: #fff;
     font-weight: 600;
@@ -80,7 +80,7 @@ body {
 }
 
     .btn-hero:hover {
-        background-color: #3e8e41;
+        background-color: #5caf38;
     }
 
 /* ----------------- Hero Slider ----------------- */
@@ -133,4 +133,11 @@ body {
 .social-icon:hover {
     color: #007bff;
     transition: color 0.2s ease;
+}
+
+/* Contact Us Map */
+#map-placeholder iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
