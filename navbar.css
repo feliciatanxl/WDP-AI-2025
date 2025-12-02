@@ -1,0 +1,20 @@
+﻿/* ----------------- Navbar ----------------- */
+.navbar {
+    transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+    .navbar.bg-transparent {
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+
+    .navbar.scrolled {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+.navbar-brand img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
