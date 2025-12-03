@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Produce</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="navbar.css">
+
+
+
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image\Green Minimalist Leaf Plant Logo.png" alt="Logo Png" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="produce.html">Our Produce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Produce Grid */
+        .produce-grid {
+            margin-top: 120px;
+        }
+
+        .produce-item {
+            margin-bottom: 30px;
+            transition: transform 0.2s;
+        }
+
+        .produce-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .produce-item img {
+            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .produce-item .card-body {
+            text-align: center;
+        }
+
+        .produce-item h5 {
+            font-weight: 700;
+        }
+
+        .produce-item p {
+            font-weight: 500;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .view-detail-btn {
+            background-color: #28a745;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            transition: background 0.2s;
+        }
+
+        .view-detail-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Modal */
+        .detail-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .detail-container.active {
+            display: flex;
+        }
+
+        .detail-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .detail-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .detail-content p {
+            color: #28a745;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .detail-content ul {
+            list-style: disc;
+            text-align: left;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .detail-content .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .detail-content input[type="number"] {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .add-cart-btn {
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-cart-btn:hover {
+            background-color: #218838;
+        }
+
+        .view-full-item {
+            display: inline-block;
+            margin-top: 5px;
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .view-full-item:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    
+    
+
+    <!-- Produce Grid -->
+    <main class="container produce-grid">
+        <div class="row">
+            <div class="col-md-4 produce-item" data-id="1">
+                <div class="card shadow-sm">
+                    <img src="image/mizuna.png" alt="Mizuna">
+                    <div class="card-body">
+                        <h5>Mizuna</h5>
+                        <p>$2.50</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="2">
+                <div class="card shadow-sm">
+                    <img src="image/chrisgreenlettuce.jpg" alt="Chris Green Lettuce">
+                    <div class="card-body">
+                        <h5>Chris Green Lettuce</h5>
+                        <p>$2.80</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="3">
+                <div class="card shadow-sm">
+                    <img src="image/lollo_bionda_lettuce.jpg" alt="Lollo Bionda Lettuce">
+                    <div class="card-body">
+                        <h5>Lollo Bionda Lettuce</h5>
+                        <p>$3.20</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="4">
+                <div class="card shadow-sm">
+                    <img src="image/cos_lettuce.jpg" alt="Cos Lettuce">
+                    <div class="card-body">
+                        <h5>Cos Lettuce</h5>
+                        <p>$3.00</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="5">
+                <div class="card shadow-sm">
+                    <img src="image/red_pak_choy.jpg" alt="Red Pak Choy">
+                    <div class="card-body">
+                        <h5>Red Pak Choy</h5>
+                        <p>$4.20</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="6">
+                <div class="card shadow-sm">
+                    <img src="image/xiaobaicai.jpg" alt="Xiao Bai Cai">
+                    <div class="card-body">
+                        <h5>Xiao Bai Cai</h5>
+                        <p>$2.80</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="7">
+                <div class="card shadow-sm">
+                    <img src="image/jiubaicai.jpg" alt="Jiu Bai Cai">
+                    <div class="card-body">
+                        <h5>Jiu Bai Cai</h5>
+                        <p>$3.30</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 produce-item" data-id="8">
+                <div class="card shadow-sm">
+                    <img src="image/maobai.jpg" alt="Mao Bai">
+                    <div class="card-body">
+                        <h5>Mao Bai</h5>
+                        <p>$3.40</p>
+                        <button class="view-detail-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="product-detail" class="detail-container">
+        <div class="detail-content">
+            <button id="close-detail" class="close-btn">&times;</button>
+            <h2 id="detail-name"></h2>
+            <p id="detail-price"></p>
+            <ul id="detail-description"></ul>
+            <label for="detail-qty">Quantity:</label>
+            <input type="number" id="detail-qty" value="1" min="1">
+            <br>
+            <button class="add-cart-btn">Add To Cart</button>
+            <a id="detail-full-link" href="#" class="view-full-item">View Full Item</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer class="custom-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="image/Green Minimalist Leaf Plant Logo_Name.png" alt="AI Logo">
+            </div>
+
+            <div class="footer-info">
+                <h5>Address</h5>
+                <p>123 Main Street<br>Singapore 123456</p>
+            </div>
+
+            <div class="footer-info">
+                <h5>Email</h5>
+                <p>info@AI.com.sg</p>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="footer-copy">Copyright &copy; 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
+    </footer>
+     
+    
+    
+    <!-- JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const produceItems = document.querySelectorAll('.produce-item');
+            const modal = document.getElementById('product-detail');
+            const closeBtn = document.getElementById('close-detail');
+            const nameEl = document.getElementById('detail-name');
+            const priceEl = document.getElementById('detail-price');
+            const descEl = document.getElementById('detail-description');
+            const qtyEl = document.getElementById('detail-qty');
+            const fullLink = document.getElementById('detail-full-link');
+
+            const products = {
+                1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green that adds a delightful bite to salads and stir-fries. Rich in vitamins A and C, mizuna grows quickly and thrives in cooler climates, making it a favorite for home gardens and sustainable farms alike."], fullLink:"#"},
+                2: { name: "Chris Green Lettuce", price: "$2.80", description: ["A vibrant, tender lettuce variety with rich green leaves and a mild, refreshing flavor. Perfect for fresh salads or sandwiches, Chris Green Lettuce is easy to grow and yields consistently, ideal for both small-scale and commercial farming."], fullLink:"#"},
+                3: { name: "Lollo Bionda Lettuce", price: "$3.20", description: [" A visually striking lettuce with frilly, light green leaves and a delicate, slightly nutty flavor. Lollo Bionda Lettuce is loved for its texture and presentation, making it perfect for gourmet dishes while being easy to cultivate in organic or hydroponic systems."], fullLink:"#"},
+                4: { name: "Cos Lettuce", price: "$3.00", description: ["A crisp, upright lettuce variety known for its sturdy leaves and refreshing crunch. Cos Lettuce thrives in sunny climates and is rich in vitamins A and K, making it a popular choice for salads, wraps, and farm-fresh harvests."], fullLink: "#"},
+                5: { name: "Red Pak Choy", price: "$4.20", description: ["A vibrant Asian leafy green with deep red-purple leaves and tender green stems. Red Pak Choy is nutrient-dense, mild in flavor, and ideal for stir-fries, soups, and steaming. It grows well in cool weather and is a favorite in sustainable farms."], fullLink :"#"},
+                6: { name: "Xiao Bai Cai", price: "$2.80", description: ["A small, tender bok choy variety with smooth white stems and mild, sweet leaves. Xiao Bai Cai matures quickly and is perfect for quick cooking, making it a staple in Asian farms and households alike."],fullLink :"#"},
+                7: { name: "Jiu Bai Cai", price: "$3.30", description: ["A hardy, fast-growing leafy vegetable commonly used in Chinese cooking. Jiu Bai Cai features light green leaves with a gentle, earthy flavor. It performs well in various soil types, making it a reliable crop for year-round farming."], fullLink: "#"},
+                8:  {name: "Mao Bai Cai", price: "$3.40", description: ["A traditional leafy cabbage variety with soft, pale green leaves and a subtly sweet taste. Mao Bai Cai is valued for its versatility in soups, stir-fries, and pickling, and it grows well in cool, moist environments."],fullLink:"#"}
+
+
+            };
+
+            produceItems.forEach(item => {
+                item.querySelector('.view-detail-btn').addEventListener('click', () => {
+                    const product = products[item.dataset.id];
+                    nameEl.textContent = product.name;
+                    priceEl.textContent = product.price;
+                    descEl.innerHTML = '';
+                    product.description.forEach(d => {
+                        const li = document.createElement('li');
+                        li.textContent = d;
+                        descEl.appendChild(li);
+                    });
+                    qtyEl.value = 1;
+                    fullLink.href = product.fullLink;
+                    modal.classList.add('active');
+                });
+            });
+
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+            modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
+        });
+    </script>
+    
+
+</body>
+</html>
