@@ -153,9 +153,6 @@
                         message: contactForm.message ? contactForm.message.value : ''
                     };
 
-
-                    // NOTE: This client-side redirect should be replaced with a FLASK AJAX POST request
-                    // when you implement the email notification feature.
                     sessionStorage.setItem("formData", JSON.stringify(formData));
                     window.location.href = "thankyou.html";
                 });
