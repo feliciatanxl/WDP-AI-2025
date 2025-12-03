@@ -270,3 +270,37 @@ body {
     .view-detail-btn:hover {
         background-color: #218838;
     }
+
+/* ----------------- Account Login/Sign Up Pill Customization (Robust Fix) ----------------- */
+
+/* Target the specific container ID for maximum specificity */
+#pills-tab .nav-link.active {
+    /* ACTIVE STATE: Meod Farm Green */
+    background-color: #008037 !important;
+    border-color: #008037 !important;
+    color: white !important;
+}
+
+    /* Target the hover/focus state for the active tab (Optional, but looks cleaner) */
+    #pills-tab .nav-link.active:hover {
+        /* Active Hover State: Lighter Green */
+        background-color: #5caf38 !important;
+        border-color: #5caf38 !important;
+        color: white !important;
+    }
+
+/* Target the general link appearance and hover for inactive pills */
+#pills-tab .nav-link {
+    /* Ensure the pills look consistent when not active */
+    border: 1px solid #ddd;
+    color: #333;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+}
+
+    /* Hover state for INACTIVE pills */
+    #pills-tab .nav-link:not(.active):hover {
+        /* Inactive Hover State: Text color changes to green */
+        color: #008037 !important;
+        border-color: #008037 !important;
+    }
