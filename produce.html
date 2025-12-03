@@ -15,28 +15,6 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
 
-
-
-    <!-- navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="image\Green Minimalist Leaf Plant Logo.png" alt="Logo Png" height="70">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="produce.html">Our Produce</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -191,9 +169,26 @@
     </style>
 </head>
 <body>
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image\Green Minimalist Leaf Plant Logo.png" alt="Logo Png" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="produce.html">Our Produce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    
-    
 
     <!-- Produce Grid -->
     <main class="container produce-grid">
@@ -297,7 +292,7 @@
     </div>
 
     <!-- Footer -->
-     <footer class="custom-footer">
+    <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
                 <img src="image/Green Minimalist Leaf Plant Logo_Name.png" alt="AI Logo">
@@ -323,9 +318,9 @@
 
         <p class="footer-copy">Copyright &copy; 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
     </footer>
-     
-    
-    
+
+
+
     <!-- JS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -339,14 +334,14 @@
             const fullLink = document.getElementById('detail-full-link');
 
             const products = {
-                1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green that adds a delightful bite to salads and stir-fries. Rich in vitamins A and C, mizuna grows quickly and thrives in cooler climates, making it a favorite for home gardens and sustainable farms alike."], fullLink:"#"},
-                2: { name: "Chris Green Lettuce", price: "$2.80", description: ["A vibrant, tender lettuce variety with rich green leaves and a mild, refreshing flavor. Perfect for fresh salads or sandwiches, Chris Green Lettuce is easy to grow and yields consistently, ideal for both small-scale and commercial farming."], fullLink:"#"},
-                3: { name: "Lollo Bionda Lettuce", price: "$3.20", description: [" A visually striking lettuce with frilly, light green leaves and a delicate, slightly nutty flavor. Lollo Bionda Lettuce is loved for its texture and presentation, making it perfect for gourmet dishes while being easy to cultivate in organic or hydroponic systems."], fullLink:"#"},
-                4: { name: "Cos Lettuce", price: "$3.00", description: ["A crisp, upright lettuce variety known for its sturdy leaves and refreshing crunch. Cos Lettuce thrives in sunny climates and is rich in vitamins A and K, making it a popular choice for salads, wraps, and farm-fresh harvests."], fullLink: "#"},
-                5: { name: "Red Pak Choy", price: "$4.20", description: ["A vibrant Asian leafy green with deep red-purple leaves and tender green stems. Red Pak Choy is nutrient-dense, mild in flavor, and ideal for stir-fries, soups, and steaming. It grows well in cool weather and is a favorite in sustainable farms."], fullLink :"#"},
-                6: { name: "Xiao Bai Cai", price: "$2.80", description: ["A small, tender bok choy variety with smooth white stems and mild, sweet leaves. Xiao Bai Cai matures quickly and is perfect for quick cooking, making it a staple in Asian farms and households alike."],fullLink :"#"},
-                7: { name: "Jiu Bai Cai", price: "$3.30", description: ["A hardy, fast-growing leafy vegetable commonly used in Chinese cooking. Jiu Bai Cai features light green leaves with a gentle, earthy flavor. It performs well in various soil types, making it a reliable crop for year-round farming."], fullLink: "#"},
-                8:  {name: "Mao Bai Cai", price: "$3.40", description: ["A traditional leafy cabbage variety with soft, pale green leaves and a subtly sweet taste. Mao Bai Cai is valued for its versatility in soups, stir-fries, and pickling, and it grows well in cool, moist environments."],fullLink:"#"}
+                1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green that adds a delightful bite to salads and stir-fries. Rich in vitamins A and C, mizuna grows quickly and thrives in cooler climates, making it a favorite for home gardens and sustainable farms alike."], fullLink: "#" },
+                2: { name: "Chris Green Lettuce", price: "$2.80", description: ["A vibrant, tender lettuce variety with rich green leaves and a mild, refreshing flavor. Perfect for fresh salads or sandwiches, Chris Green Lettuce is easy to grow and yields consistently, ideal for both small-scale and commercial farming."], fullLink: "#" },
+                3: { name: "Lollo Bionda Lettuce", price: "$3.20", description: [" A visually striking lettuce with frilly, light green leaves and a delicate, slightly nutty flavor. Lollo Bionda Lettuce is loved for its texture and presentation, making it perfect for gourmet dishes while being easy to cultivate in organic or hydroponic systems."], fullLink: "#" },
+                4: { name: "Cos Lettuce", price: "$3.00", description: ["A crisp, upright lettuce variety known for its sturdy leaves and refreshing crunch. Cos Lettuce thrives in sunny climates and is rich in vitamins A and K, making it a popular choice for salads, wraps, and farm-fresh harvests."], fullLink: "#" },
+                5: { name: "Red Pak Choy", price: "$4.20", description: ["A vibrant Asian leafy green with deep red-purple leaves and tender green stems. Red Pak Choy is nutrient-dense, mild in flavor, and ideal for stir-fries, soups, and steaming. It grows well in cool weather and is a favorite in sustainable farms."], fullLink: "#" },
+                6: { name: "Xiao Bai Cai", price: "$2.80", description: ["A small, tender bok choy variety with smooth white stems and mild, sweet leaves. Xiao Bai Cai matures quickly and is perfect for quick cooking, making it a staple in Asian farms and households alike."], fullLink: "#" },
+                7: { name: "Jiu Bai Cai", price: "$3.30", description: ["A hardy, fast-growing leafy vegetable commonly used in Chinese cooking. Jiu Bai Cai features light green leaves with a gentle, earthy flavor. It performs well in various soil types, making it a reliable crop for year-round farming."], fullLink: "#" },
+                8: { name: "Mao Bai Cai", price: "$3.40", description: ["A traditional leafy cabbage variety with soft, pale green leaves and a subtly sweet taste. Mao Bai Cai is valued for its versatility in soups, stir-fries, and pickling, and it grows well in cool, moist environments."], fullLink: "#" }
 
 
             };
@@ -369,10 +364,10 @@
             });
 
             closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-            modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
+            modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
         });
     </script>
-    
+
 
 </body>
 </html>
