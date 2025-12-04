@@ -271,8 +271,8 @@ body {
         border-color: #008037 !important;
     }
 
-/* Index.html */
-/* ABOUT US SECTION */
+/* ----------------- ABOUT US & MEOD/SUSTAINABILITY SECTIONS (Unified) ----------------- */
+
 .about-section {
     padding: 100px 0;
     background-color: #ffffff;
@@ -289,15 +289,17 @@ body {
     gap: 60px;
 }
 
-/* Text styling */
-.about-text h2 {
+/* Common Text styling for About/Meod (Green Branded) */
+.about-text h2,
+.meod-text h2 {
     font-size: 2.8rem;
     font-weight: 600;
-    color: #365d37;
+    color: #365d37; /* Consistent Green Brand Color */
     margin-bottom: 20px;
 }
 
-.about-text p {
+.about-text p,
+.meod-text p {
     font-size: 1.15rem;
     line-height: 1.8;
     color: #444;
@@ -305,21 +307,47 @@ body {
     max-width: 550px;
 }
 
-/* Image styling */
-.about-image img {
-    width: 500px;
-    height: auto;
-    border-radius: 14px;
-    object-fit: cover;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+/* ----------------- Image Framing Template (Unique Rounded Borders) ----------------- */
+
+/* --- About Us Image Frame (Text Left, Image Right) --- */
+.about-image-frame {
+    position: relative;
+    width: 320px;
+    height: 380px;
+    overflow: hidden;
+    /* Border on Bottom and Right */
+    border-bottom: 8px solid #365d37;
+    border-right: 8px solid #365d37;
+    border-radius: 170px 170px 0 0; /* Creates the unique rounded top */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
 
+/* --- Meod/Sustainability Image Frame (Image Left, Text Right) --- */
+.meod-image-frame {
+    position: relative;
+    width: 320px;
+    height: 380px;
+    overflow: hidden;
+    /* Border on Bottom and Left */
+    border-bottom: 8px solid #365d37;
+    border-left: 8px solid #365d37;
+    border-radius: 170px 170px 0 0; /* Creates the unique rounded top */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+    .about-image-frame img,
+    .meod-image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 
 
-/* MEOD Style Section */
+/* ----------------- MEOD/SUSTAINABILITY SECTION (Row Reverse) ----------------- */
+
 .meod-section {
     padding: 90px 0;
-/*    background-color: #f7f7f7;*/
     font-family: 'Poppins', sans-serif;
 }
 
@@ -330,27 +358,28 @@ body {
     display: flex;
     align-items: center;
     gap: 60px;
+    /* Reverses the order for Image (Left) and Text (Right) */
+    flex-direction: row-reverse;
 }
 
-/* Image styling */
-.meod-image img {
-    width: 500px;
-    height: auto;
-    border-radius: 14px;
-    object-fit: cover;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
+/* ----------------- Responsive Adjustments ----------------- */
 
-/* Text styling */
-.meod-text h2 {
-    font-size: 2.7rem;
-    color: #365d37; /* soft MEOD green */
-    margin-bottom: 20px;
-    font-weight: 600;
-}
+@media (max-width: 1080px) {
+    .about-container,
+    .meod-container {
+        /* Stacks them vertically on smaller screens */
+        flex-direction: column;
+        text-align: center;
+    }
 
-.meod-text p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #444;
+    .about-text, .meod-text {
+        max-width: 100%;
+    }
+
+    .about-image-frame,
+    .meod-image-frame {
+        margin-top: 30px;
+        width: 300px;
+        height: 360px;
+    }
 }
