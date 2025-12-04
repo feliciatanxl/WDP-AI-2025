@@ -83,32 +83,6 @@ body {
         background-color: #5caf38;
     }
 
-/* ----------------- Hero Slider ----------------- */
-#farmCarousel,
-.carousel-inner,
-.carousel-item {
-    height: 100vh;
-}
-
-.hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(70%) saturate(120%);
-}
-
-.carousel-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px 30px;
-    border-radius: 10px;
-}
-
 /* ----------------- Responsive Hero ----------------- */
 @media (max-width: 768px) {
     #farmCarousel,
@@ -273,34 +247,110 @@ body {
 
 /* ----------------- Account Login/Sign Up Pill Customization (Robust Fix) ----------------- */
 
-/* Target the specific container ID for maximum specificity */
 #pills-tab .nav-link.active {
-    /* ACTIVE STATE: Meod Farm Green */
     background-color: #008037 !important;
     border-color: #008037 !important;
     color: white !important;
 }
 
-    /* Target the hover/focus state for the active tab (Optional, but looks cleaner) */
     #pills-tab .nav-link.active:hover {
-        /* Active Hover State: Lighter Green */
         background-color: #5caf38 !important;
         border-color: #5caf38 !important;
         color: white !important;
     }
 
-/* Target the general link appearance and hover for inactive pills */
 #pills-tab .nav-link {
-    /* Ensure the pills look consistent when not active */
     border: 1px solid #ddd;
     color: #333;
     background-color: #f8f9fa;
     transition: all 0.2s ease-in-out;
 }
 
-    /* Hover state for INACTIVE pills */
     #pills-tab .nav-link:not(.active):hover {
-        /* Inactive Hover State: Text color changes to green */
         color: #008037 !important;
         border-color: #008037 !important;
     }
+
+/* Index.html */
+/* ABOUT US SECTION */
+.about-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+    font-family: "Poppins", sans-serif;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Text styling */
+.about-text h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #365d37;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 18px;
+    max-width: 550px;
+}
+
+/* Image styling */
+.about-image img {
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+
+
+/* MEOD Style Section */
+.meod-section {
+    padding: 90px 0;
+/*    background-color: #f7f7f7;*/
+    font-family: 'Poppins', sans-serif;
+}
+
+.meod-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Image styling */
+.meod-image img {
+    width: 500px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Text styling */
+.meod-text h2 {
+    font-size: 2.7rem;
+    color: #365d37; /* soft MEOD green */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.meod-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+}
