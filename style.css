@@ -271,115 +271,150 @@ body {
         border-color: #008037 !important;
     }
 
-/* ----------------- ABOUT US & MEOD/SUSTAINABILITY SECTIONS (Unified) ----------------- */
 
-.about-section {
-    padding: 100px 0;
-    background-color: #ffffff;
-    font-family: "Poppins", sans-serif;
+
+/* ----------------- CORE COLORS / UTILITY ----------------- */
+.primary-green {
+    color: #008037
 }
 
-.about-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+.secondary-green {
+    color: #5caf38; 
+}
+
+/* ----------------- HERO SECTION STYLING ----------------- */
+
+#farmCarousel,
+.carousel-inner,
+.carousel-item {
+    height: 90vh; 
+    min-height: 400px;
+}
+
+.hero-img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1; 
+}
+
+.carousel-caption {
+    z-index: 2; 
+    text-align: left; 
+    bottom: 25%; 
+    color: #fff; 
+}
+
+.carousel-caption span {
+    color: #5caf38; 
+    border-color: #5caf38 !important; 
+    padding-bottom: 5px !important;
+}
+
+.carousel-caption h1 {
+    font-weight: 800;
+}
+
+
+/* ----------------- ABOUT SECTION STYLING ----------------- */
+
+.image-container-wrapper {
+    position: relative;
+    padding: 30px; 
+    padding-top: 50px; 
+    padding-bottom: 50px;
+}
+.image-content-wrapper {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden; 
+    z-index: 5;
+    position: relative; 
+}
+
+.image-content-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.decorative-box {
+    background-color: #5caf38;
+    position: absolute;
+    border-radius: 5px;
+    z-index: 1; 
+}
+
+.decorative-box.top-left {
+    top: 39px;
+    left: 30px;
+    width: 60px; 
+    height: 15px;
+    border-radius: 0;
+}
+
+.decorative-box.bottom-left {
+    bottom: 0;
+    left: 10px;
+    width: 25px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+
+.nurtured-overlay {
+    position: absolute;
+    bottom: 40px; 
+    left: 10px;
+    background-color: #008037; 
+    color: white;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 60px;
 }
 
-/* Common Text styling for About/Meod (Green Branded) */
-.about-text h2,
-.meod-text h2 {
-    font-size: 2.8rem;
+.nurtured-overlay i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+.about-us-text {
+    color: #5caf38; 
+    font-size: 1.1rem;
+    text-transform: none !important;
+}
+
+.text-content-wrapper h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+
+.btn-about {
+    background-color: #5caf38; 
+    border: none;
+    color: #fff;
     font-weight: 600;
-    color: #365d37; /* Consistent Green Brand Color */
-    margin-bottom: 20px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.about-text p,
-.meod-text p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 18px;
-    max-width: 550px;
-}
-
-/* ----------------- Image Framing Template (Unique Rounded Borders) ----------------- */
-
-/* --- About Us Image Frame (Text Left, Image Right) --- */
-.about-image-frame {
-    position: relative;
-    width: 320px;
-    height: 380px;
-    overflow: hidden;
-    /* Border on Bottom and Right */
-    border-bottom: 8px solid #365d37;
-    border-right: 8px solid #365d37;
-    border-radius: 170px 170px 0 0; /* Creates the unique rounded top */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-/* --- Meod/Sustainability Image Frame (Image Left, Text Right) --- */
-.meod-image-frame {
-    position: relative;
-    width: 320px;
-    height: 380px;
-    overflow: hidden;
-    /* Border on Bottom and Left */
-    border-bottom: 8px solid #365d37;
-    border-left: 8px solid #365d37;
-    border-radius: 170px 170px 0 0; /* Creates the unique rounded top */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-    .about-image-frame img,
-    .meod-image-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-
-/* ----------------- MEOD/SUSTAINABILITY SECTION (Row Reverse) ----------------- */
-
-.meod-section {
-    padding: 90px 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-.meod-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    /* Reverses the order for Image (Left) and Text (Right) */
-    flex-direction: row-reverse;
-}
-
-/* ----------------- Responsive Adjustments ----------------- */
-
-@media (max-width: 1080px) {
-    .about-container,
-    .meod-container {
-        /* Stacks them vertically on smaller screens */
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-text, .meod-text {
-        max-width: 100%;
-    }
-
-    .about-image-frame,
-    .meod-image-frame {
-        margin-top: 30px;
-        width: 300px;
-        height: 360px;
-    }
+.btn-about:hover {
+    background-color: #008037;
+    color: #fff;
 }
