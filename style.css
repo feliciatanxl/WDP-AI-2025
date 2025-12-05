@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .page-content {
@@ -433,8 +434,10 @@ body {
     padding: 60px 0;
     margin-top: 50px;
     width: 100vw;
-    margin-left: 50%;
+    margin-left: 0;
     transform: translateX(-50%);
+    left: 50%;
+    position: relative;
 }
 
     .why-choose-us-banner h3 {
@@ -579,3 +582,4 @@ body {
             margin-right: -30px;
         }
 }
+
