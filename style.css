@@ -571,8 +571,7 @@ body {
 /* ----------------- NAV BAR OFFSET FIX ----------------- */
 
 .main-content-offset {
-    /* Pushes content down below the fixed-top navbar */
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 
