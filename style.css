@@ -594,3 +594,44 @@ header {
         }
 }*/
 
+
+/* --- VISION & MISSION SECTION STYLING --- */
+
+.text-primary-blue {
+    color: #4CAF50;
+}
+
+.text-green {
+    color: #ff9933; 
+}
+
+.vision-image-container {
+    padding: 15px; 
+    background-color: #f8f8f8; 
+    border-radius: 1.5rem; 
+}
+
+    .vision-image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 1rem; 
+    }
+
+.vision-statement h3,
+.mission-statement h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.vision-statement p,
+.mission-statement p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6c757d !important; 
+}
+
+@media (max-width: 992px) {
+    .vision-image-container {
+        margin-bottom: 3rem; 
+    }
+}
