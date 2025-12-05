@@ -26,6 +26,10 @@ body {
     margin: 0 auto;
 }
 
+header {
+    margin-top: 10px;
+}
+
 /* ----------------- Utility / Responsive ----------------- */
 @media (max-width: 992px) {
     .page-content {
@@ -318,7 +322,7 @@ body {
 .carousel-caption {
     z-index: 2; 
     text-align: left; 
-    bottom: 25%; 
+    bottom: 15%; 
     color: #fff; 
 }
 
