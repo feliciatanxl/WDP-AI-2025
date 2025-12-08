@@ -42,3 +42,27 @@
     .pagination .page-link:hover {
         background-color: #e8f5e9;
     }
+
+@media (max-width: 768px) {
+
+    .article-list-page.main-content-offset {
+        padding-top: 60px;
+    }
+
+    .article-grid .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .article-grid .row {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .article-grid .col-lg-4, .article-grid .col-md-6 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
