@@ -43,6 +43,11 @@
         background-color: #e8f5e9;
     }
 
+.article-list-page.main-content-offset {
+    padding-top: 70px;
+}
+
+
 @media (max-width: 768px) {
 
     .article-list-page.main-content-offset {
