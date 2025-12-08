@@ -1,0 +1,25 @@
+﻿/* ----------------- Account Login/Sign Up Pill Customization ----------------- */
+
+#pills-tab .nav-link.active {
+    background-color: #008037 !important;
+    border-color: #008037 !important;
+    color: white !important;
+}
+
+    #pills-tab .nav-link.active:hover {
+        background-color: #5caf38 !important;
+        border-color: #5caf38 !important;
+        color: white !important;
+    }
+
+#pills-tab .nav-link {
+    border: 1px solid #ddd;
+    color: #333;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+}
+
+    #pills-tab .nav-link:not(.active):hover {
+        color: #008037 !important;
+        border-color: #008037 !important;
+    }
