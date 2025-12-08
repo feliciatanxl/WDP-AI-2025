@@ -166,6 +166,83 @@
             const descEl = document.getElementById('detail-description');
             const qtyEl = document.getElementById('detail-qty');
             const fullLink = document.getElementById('detail-full-link');
+            const addToCartBtn = document.querySelector('.add-cart-btn');
+
+            let currentProductId = null;
+
+            const products = {
+                1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green."], fullLink: "#" },
+                2: { name: "Chris Green Lettuce", price: "$2.80", description: ["A vibrant, tender lettuce variety."], fullLink: "#" },
+                3: { name: "Lollo Bionda Lettuce", price: "$3.20", description: ["A visually striking lettuce with frilly leaves."], fullLink: "#" },
+                4: { name: "Cos Lettuce", price: "$3.00", description: ["A crisp, upright lettuce variety."], fullLink: "#" },
+                5: { name: "Red Pak Choy", price: "$4.20", description: ["A vibrant Asian leafy green."], fullLink: "#" },
+                6: { name: "Xiao Bai Cai", price: "$2.80", description: ["A small, tender bok choy variety."], fullLink: "#" },
+                7: { name: "Jiu Bai Cai", price: "$3.30", description: ["A hardy, fast-growing leafy vegetable."], fullLink: "#" },
+                8: { name: "Mao Bai Cai", price: "$3.40", description: ["A traditional leafy cabbage variety."], fullLink: "#" }
+            };
+
+            // Open Modal
+            produceItems.forEach(item => {
+                item.querySelector('.view-detail-btn').addEventListener('click', () => {
+                    const id = item.dataset.id;
+                    currentProductId = id; // Store ID for cart logic
+                    const product = products[id];
+                    
+                    nameEl.textContent = product.name;
+                    priceEl.textContent = product.price;
+                    descEl.innerHTML = '';
+                    product.description.forEach(d => {
+                        const li = document.createElement('li');
+                        li.textContent = d;
+                        descEl.appendChild(li);
+                    });
+                    qtyEl.value = 1;
+                    fullLink.href = product.fullLink;
+                    modal.classList.add('active');
+                });
+            });
+
+            // Close Modal Logic
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+            modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+
+            // Add to Cart Logic - MODIFIED FOR ORDERS PAGE
+            addToCartBtn.addEventListener('click', () => {
+                if (!currentProductId) return;
+
+                const product = products[currentProductId];
+                const qty = parseInt(qtyEl.value);
+
+                // Create Item Object
+                const cartItem = {
+                    id: currentProductId,
+                    name: product.name,
+                    price: product.price,
+                    qty: qty
+                };
+
+                // Get existing cart from LocalStorage or empty array
+                let cart = JSON.parse(localStorage.getItem('farmCart')) || [];
+                
+                // Add new item
+                cart.push(cartItem);
+
+                // Save back to LocalStorage
+                localStorage.setItem('farmCart', JSON.stringify(cart));
+
+                // Redirect to Orders page immediately
+                window.location.href = "orders.html";
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const produceItems = document.querySelectorAll('.produce-item');
+            const modal = document.getElementById('product-detail');
+            const closeBtn = document.getElementById('close-detail');
+            const nameEl = document.getElementById('detail-name');
+            const priceEl = document.getElementById('detail-price');
+            const descEl = document.getElementById('detail-description');
+            const qtyEl = document.getElementById('detail-qty');
+            const fullLink = document.getElementById('detail-full-link');
 
             const products = {
                 1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green that adds a delightful bite to salads and stir-fries. Rich in vitamins A and C, mizuna grows quickly and thrives in cooler climates, making it a favorite for home gardens and sustainable farms alike."], fullLink: "#" },
