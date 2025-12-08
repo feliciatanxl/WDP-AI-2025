@@ -107,6 +107,9 @@
             </div>
         </section>
     </main>
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
     <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
@@ -161,6 +164,23 @@
 
                     sessionStorage.setItem("formData", JSON.stringify(formData));
                     window.location.href = "thankyou.html";
+                });
+            }
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', function () {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollTopBtn.style.display = "block";
+                    } else {
+                        scrollTopBtn.style.display = "none";
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             }
         });
