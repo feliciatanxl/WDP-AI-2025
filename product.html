@@ -129,6 +129,9 @@
             <a id="detail-full-link" href="#" class="view-full-item">View Full Item</a>
         </div>
     </div>
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
     <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
@@ -187,7 +190,7 @@
                     const id = item.dataset.id;
                     currentProductId = id; // Store ID for cart logic
                     const product = products[id];
-                    
+
                     nameEl.textContent = product.name;
                     priceEl.textContent = product.price;
                     descEl.innerHTML = '';
@@ -223,7 +226,7 @@
 
                 // Get existing cart from LocalStorage or empty array
                 let cart = JSON.parse(localStorage.getItem('farmCart')) || [];
-                
+
                 // Add new item
                 cart.push(cartItem);
 
@@ -276,6 +279,20 @@
 
             closeBtn.addEventListener('click', () => modal.classList.remove('active'));
             modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            window.onscroll = function () {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>

@@ -179,7 +179,9 @@
             </div>
         </div>
     </main>
-
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
     <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
@@ -210,7 +212,7 @@
     <script>
         function startCounter(target) {
             const endValue = parseInt(target.getAttribute('data-count').replace(/[^0-9]/g, ''));
-            const duration = 2000; 
+            const duration = 2000;
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
@@ -236,7 +238,7 @@
             const counters = document.querySelectorAll('.stat-number');
 
             const observerOptions = {
-                root: null, 
+                root: null,
                 rootMargin: '0px',
                 threshold: 0.5
             };
@@ -253,6 +255,22 @@
             counters.forEach(counter => {
                 observer.observe(counter);
             });
+
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            window.onscroll = function () {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
         });
     </script>
 </body>
