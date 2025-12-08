@@ -1,4 +1,5 @@
 ﻿/* ----------------- Base / Global Layout ----------------- */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -6,12 +7,16 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
+
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
 }
+
+
 
 .page-content {
     flex: 1 0 auto;
@@ -21,17 +26,25 @@ body {
     padding-right: 80px;
 }
 
+
+
 .container-main {
     max-width: 1200px;
     margin: 0 auto;
 }
 
+
+
 header {
     margin-top: 10px;
 }
 
+
+
 /* ----------------- Utility / Responsive ----------------- ****/
+
 @media (max-width: 992px) {
+
     .page-content {
         padding-left: 30px;
         padding-right: 30px;
@@ -39,52 +52,75 @@ header {
     }
 }
 
+
+
 @media (max-width: 576px) {
+
     .navbar-brand img {
         height: 48px;
     }
+
+
 
     .page-content {
         padding-top: 70px;
     }
 }
 
+
+
 .site-padding {
     padding-left: 80px;
     padding-right: 80px;
 }
 
+
+
 @media (max-width: 768px) {
+
     .site-padding {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 
+
+
 /* ----------------- CORE COLORS / UTILITY ----------------- */
+
 .primary-green {
     color: #008037
 }
+
+
 
 .secondary-green {
     color: #5caf38;
 }
 
+
+
 .text-green {
-    /* Note: You had two conflicting definitions. Keeping the primary one for general use. */
     color: #4CAF50 !important;
 }
+
+
 
 .bg-light-green {
     background-color: #f4fcf4;
 }
 
+
+
 /* ----------------- Buttons (General) ----------------- */
+
 .btn-custom {
     background-color: #008037;
     border-color: #008037;
     color: white;
 }
+
+
 
     .btn-custom:hover {
         background-color: #5caf38;
@@ -92,12 +128,18 @@ header {
         color: white;
     }
 
+
+
 /* ----------------- NAV BAR OFFSET FIX ----------------- */
+
 .main-content-offset {
     padding-top: 120px;
 }
 
+
+
 /* ----------------- Scroll to Top Button ----------------- */
+
 #scrollTopBtn {
     display: none;
     position: fixed;
@@ -116,6 +158,8 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, opacity 0.3s;
 }
+
+
 
     #scrollTopBtn:hover {
         background-color: #45a049;
