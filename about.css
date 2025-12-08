@@ -112,3 +112,11 @@
         font-size: 2.2rem;
     }
 }
+
+/* ----------------- FIX FOR MOBILE BORDER LINE ----------------- */
+
+@media (max-width: 991.98px) {
+    .col-6.stats-item.border-start {
+        border-left: none !important;
+    }
+}
