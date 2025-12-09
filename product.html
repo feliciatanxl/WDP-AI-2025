@@ -39,99 +39,131 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-        <!-- Search Bar Navbar -->
-        <nav class="sub-navbar bg-white fixed-top" style="top: 80px;">
-            <div class="container d-flex justify-content-end py-2">
-                <input class="form-control w-50" id="search" type="text" placeholder="Search produce...">
-            </div>
-        </nav>
+
+
+
 
 
     </header>
-    <main class="container produce-grid">
+    <main class="container" style="margin-top: 150px;">
         <div class="row">
-            <div class="col-md-4 produce-item" data-id="1">
-                <div class="card shadow-sm">
-                    <img src="image/mizuna.png" alt="Mizuna">
-                    <div class="card-body">
-                        <h5>Mizuna</h5>
-                        <p>$2.50</p>
-                        <button class="view-detail-btn">View Details</button>
+
+            <!-- LEFT SIDEBAR-->
+            <div class="col-md-3">
+
+                <!-- SEARCH BAR -->
+                <h6 class="fw-bold mb-2">SEARCH PRODUCTS:</h6>
+                <div class="search-box mb-4">
+                    <input type="text" id="search" placeholder="Search products...">
+                    <i class="bi bi-search"></i>
+                </div>
+
+                <!-- PRODUCT CATEGORIES -->
+                <h6 class="fw-bold mb-2">PRODUCT CATEGORIES</h6>
+                <ul class="product-category-list">
+                    <li><a href="#">Leafy Greens</a></li>
+                    <li><a href="#">Lettuce</a></li>
+                    <li><a href="#">Chinese Vegetables</a></li>
+                    <li><a href="#">Organic Produce</a></li>
+                    <li><a href="#">Bundles</a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-9">
+
+                <div class="row g-4">
+
+                    <div class="col-md-4 produce-item" data-id="1">
+                        <div class="card shadow-sm">
+                            <img src="image/mizuna.png" alt="Mizuna">
+                            <div class="card-body">
+                                <h5>Mizuna</h5>
+                                <p>$2.50</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="col-md-4 produce-item" data-id="2">
+                        <div class="card shadow-sm">
+                            <img src="image/chrisgreenlettuce.jpg" alt="Chris Green Lettuce">
+                            <div class="card-body">
+                                <h5>Chris Green Lettuce</h5>
+                                <p>$2.80</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="3">
+                        <div class="card shadow-sm">
+                            <img src="image/lollo_bionda_lettuce.jpg" alt="Lollo Bionda Lettuce">
+                            <div class="card-body">
+                                <h5>Lollo Bionda Lettuce</h5>
+                                <p>$3.20</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="4">
+                        <div class="card shadow-sm">
+                            <img src="image/cos_lettuce.jpg" alt="Cos Lettuce">
+                            <div class="card-body">
+                                <h5>Cos Lettuce</h5>
+                                <p>$3.00</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="5">
+                        <div class="card shadow-sm">
+                            <img src="image/red_pak_choy.jpg" alt="Red Pak Choy">
+                            <div class="card-body">
+                                <h5>Red Pak Choy</h5>
+                                <p>$4.20</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="6">
+                        <div class="card shadow-sm">
+                            <img src="image/xiaobaicai.jpg" alt="Xiao Bai Cai">
+                            <div class="card-body">
+                                <h5>Xiao Bai Cai</h5>
+                                <p>$2.80</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="7">
+                        <div class="card shadow-sm">
+                            <img src="image/jiubaicai.jpg" alt="Jiu Bai Cai">
+                            <div class="card-body">
+                                <h5>Jiu Bai Cai</h5>
+                                <p>$3.30</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 produce-item" data-id="8">
+                        <div class="card shadow-sm">
+                            <img src="image/maobai.jpg" alt="Mao Bai">
+                            <div class="card-body">
+                                <h5>Mao Bai</h5>
+                                <p>$3.40</p>
+                                <button class="view-detail-btn">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="col-md-4 produce-item" data-id="2">
-                <div class="card shadow-sm">
-                    <img src="image/chrisgreenlettuce.jpg" alt="Chris Green Lettuce">
-                    <div class="card-body">
-                        <h5>Chris Green Lettuce</h5>
-                        <p>$2.80</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="3">
-                <div class="card shadow-sm">
-                    <img src="image/lollo_bionda_lettuce.jpg" alt="Lollo Bionda Lettuce">
-                    <div class="card-body">
-                        <h5>Lollo Bionda Lettuce</h5>
-                        <p>$3.20</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="4">
-                <div class="card shadow-sm">
-                    <img src="image/cos_lettuce.jpg" alt="Cos Lettuce">
-                    <div class="card-body">
-                        <h5>Cos Lettuce</h5>
-                        <p>$3.00</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="5">
-                <div class="card shadow-sm">
-                    <img src="image/red_pak_choy.jpg" alt="Red Pak Choy">
-                    <div class="card-body">
-                        <h5>Red Pak Choy</h5>
-                        <p>$4.20</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="6">
-                <div class="card shadow-sm">
-                    <img src="image/xiaobaicai.jpg" alt="Xiao Bai Cai">
-                    <div class="card-body">
-                        <h5>Xiao Bai Cai</h5>
-                        <p>$2.80</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="7">
-                <div class="card shadow-sm">
-                    <img src="image/jiubaicai.jpg" alt="Jiu Bai Cai">
-                    <div class="card-body">
-                        <h5>Jiu Bai Cai</h5>
-                        <p>$3.30</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 produce-item" data-id="8">
-                <div class="card shadow-sm">
-                    <img src="image/maobai.jpg" alt="Mao Bai">
-                    <div class="card-body">
-                        <h5>Mao Bai</h5>
-                        <p>$3.40</p>
-                        <button class="view-detail-btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </main>
     <!-- Modal -->
     <div id="product-detail" class="detail-container">
