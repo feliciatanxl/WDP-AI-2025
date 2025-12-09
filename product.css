@@ -3,6 +3,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f7f7f7;
+    padding-top: 110px;
 }
 
 /* Navbar */
@@ -53,7 +54,6 @@ body {
     cursor: pointer;
     font-weight: 600;
     display: inline-block;
-    transition: background 0.2s;
     transition: background 0.25s, transform 0.15s;
 }
 
@@ -133,17 +133,15 @@ body {
     }
 
 
-
 .add-cart-btn {
     background-color: #28a745;
     border: none;
     color: #fff;
     padding: 10px 24px;
-    margin-bottom: 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 12px;
 }
+
 
     .add-cart-btn:hover {
         background-color: #218838;
@@ -151,17 +149,26 @@ body {
 
 .view-full-item {
     display: inline-block;
-    margin-top: 5px;
-    margin-right: 5px;
+    margin: 0;
     color: #28a745;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 12px;
 }
+
 
     .view-full-item:hover {
         text-decoration: underline;
     }
+
+.action-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
 
 footer {
     background: #fff;
@@ -173,15 +180,7 @@ footer {
 
 
 
-/* Navbar Style */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
-    padding: 10px 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+
 
 .logo {
     font-size: 22px;
@@ -215,6 +214,13 @@ footer {
 }
 
 /* Sidebar search box */
+.search-bar-section {
+    height: 80px;
+    position: sticky;
+    top: 70px; /* height of your main navbar */
+    z-index: 1020;
+}
+
 .search-box {
     position: relative;
 }
