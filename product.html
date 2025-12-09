@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +35,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="product.html">Our Produce</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="product.html">
+                                Our
+                                Produce
+                            </a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="article.html">Articles</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="account.html">Account</a></li>
@@ -184,11 +190,22 @@
             <p id="detail-price"></p>
             <ul id="detail-description"></ul>
 
-            <label for="detail-qty">Quantity:</label>
-            <input type="number" id="detail-qty" min="1" value="1">
+
+            <div class="quantity-wrapper">
+                <div class="quantity-selector">
+                    <div class="quantity-btn" id="qty-minus">−</div>
+                    <span class="quantity-number" id="qty-number">1</span>
+                    <div class="quantity-btn" id="qty-plus">+</div>
+                </div>
+            </div>
+
+
+
+
+
             <div class="action-row">
                 <button class="add-cart-btn mt-3">Add To Cart</button>
-                <a id="detail-full-link" href="#" class="view-full-item d-block mt-2">View Full Item</a>
+
             </div>
         </div>
     </div>
@@ -236,8 +253,10 @@
             const nameEl = document.getElementById('detail-name');
             const priceEl = document.getElementById('detail-price');
             const descEl = document.getElementById('detail-description');
-            const qtyEl = document.getElementById('detail-qty');
-            const fullLink = document.getElementById('detail-full-link');
+            const qtyEl = document.getElementById('qty-number');
+
+
+            //const fullLink = document.getElementById('detail-full-link');
             const addToCartBtn = document.querySelector('.add-cart-btn');
 
             let currentProductId = null;
@@ -270,7 +289,7 @@
                     });
 
                     qtyEl.value = 1;
-                    fullLink.href = product.fullLink;
+                    //fullLink.href = product.fullLink;
 
                     modal.classList.add("active");
                 });
@@ -288,7 +307,8 @@
                     id: currentProductId,
                     name: products[currentProductId].name,
                     price: products[currentProductId].price,
-                    qty: parseInt(qtyEl.value)
+                    qty: parseInt(qtyEl.textContent)
+
                 });
 
                 localStorage.setItem("farmCart", JSON.stringify(cart));
@@ -319,7 +339,27 @@
                 product.style.display = name.includes(text) ? "block" : "none";
             });
         });
+        //Quantity
+        let qty = 1;
+
+        const qtyNum = document.getElementById("qty-number");
+        const qtyMinus = document.getElementById("qty-minus");
+        const qtyPlus = document.getElementById("qty-plus");
+
+        qtyMinus.addEventListener("click", () => {
+            if (qty > 1) qty--;
+            qtyNum.textContent = qty;
+        });
+
+        qtyPlus.addEventListener("click", () => {
+            qty++;
+            qtyNum.textContent = qty;
+        });
+
+
+
     </script>
 
 </body>
+
 </html>

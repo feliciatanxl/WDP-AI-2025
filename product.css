@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f7f7f7;
-    padding-top:100px;
+    padding-top: 100px;
 }
 
 /* Navbar */
@@ -47,14 +47,15 @@ body {
 
 .view-detail-btn {
     background-color: #28a745;
-    border: none;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 5px;
+    width: 70%;
+    padding: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #464646;
+    background: #fff;
     cursor: pointer;
     font-weight: 600;
-    display: inline-block;
-    transition: background 0.25s, transform 0.15s;
+    font-size: 14px;
+    transition: 0.2s ease;
 }
 
     .view-detail-btn:hover {
@@ -102,7 +103,7 @@ body {
     }
 
     .detail-content p {
-        color: #28a745;
+        color: black;
         font-weight: 600;
         margin-bottom: 20px;
         font-size: 20px;
@@ -134,11 +135,14 @@ body {
 
 
 .add-cart-btn {
-    background-color: #28a745;
-    border: none;
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 5px;
+    width: 70%;
+    padding: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #464646;
+    background: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s ease;
     cursor: pointer;
 }
 
@@ -147,7 +151,7 @@ body {
         background-color: #218838;
     }
 
-.view-full-item {
+/* .view-full-item {
     display: inline-block;
     margin: 0;
     color: #28a745;
@@ -158,7 +162,7 @@ body {
 
     .view-full-item:hover {
         text-decoration: underline;
-    }
+    } */
 
 .action-row {
     display: flex;
@@ -167,6 +171,48 @@ body {
     gap: 15px;
     margin-top: 20px;
 }
+
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* spacing */
+    width: 100%;
+    margin: 0 auto; /* centers it */
+}
+
+.quantity-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* perfect circle */
+    border: 1px solid #e6e6e6;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px; /* clean minimalist icon */
+    user-select: none;
+    transition: 0.2s ease;
+}
+
+    .quantity-btn:hover {
+        background: #ececec;
+    }
+
+.quantity-number {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.quantity-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+
 
 
 
