@@ -1,25 +1,132 @@
-﻿/* ----------------- Account Login/Sign Up Pill Customization ----------------- */
-
-#pills-tab .nav-link.active {
-    background-color: #008037 !important;
-    border-color: #008037 !important;
-    color: white !important;
+﻿/* ----------------- Account Login/Sign Up ----------------- */
+:root {
+    --primary-green: #2d6a4f;
+    --secondary-green: #52b788;
+    --light-green: #d8f3dc;
+    --accent-sage: #95d5b2;
+    --dark-text: #1b4332;
+    --light-bg: #f8fdf9;
+}
+        
+.page-content {
+    padding-top: 120px;
+    min-height: calc(100vh - 200px);
 }
 
-    #pills-tab .nav-link.active:hover {
-        background-color: #5caf38 !important;
-        border-color: #5caf38 !important;
-        color: white !important;
-    }
-
-#pills-tab .nav-link {
-    border: 1px solid #ddd;
-    color: #333;
-    background-color: #f8f9fa;
-    transition: all 0.2s ease-in-out;
+.auth-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(45, 106, 79, 0.15);
+    border: none;
+    overflow: hidden;
 }
 
-    #pills-tab .nav-link:not(.active):hover {
-        color: #008037 !important;
-        border-color: #008037 !important;
+.nav-pills .nav-link {
+    color: var(--primary-green);
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 12px;
+    transition: all 0.3s ease; 
+}
+
+.nav-pills .nav-link:hover {
+     background-color: var(--light-green);
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    color: white;
+}
+
+.form-label {
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    border: 2px solid var(--light-green);
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--secondary-green);
+    box-shadow: 0 0 0 0.2rem rgba(82, 183, 136, 0.25);
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+}
+
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
+    background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+}
+
+.btn-outline-secondary {
+    border: 2px solid var(--light-green);
+    color: var(--primary-green);
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--light-green);
+    border-color: var(--accent-sage);
+    color: var(--primary-green);
+}
+
+.form-check-input:checked {
+    background-color: var(--secondary-green);
+    border-color: var(--secondary-green);
+}
+
+.text-muted {
+    color: #74a18b !important;
+}
+
+a {
+    color: var(--secondary-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-green);
+}
+
+hr {
+    border-color: var(--light-green);
+    opacity: 0.5;
+}
+
+.display-6 {
+    color: var(--primary-green);
+ }
+
+@keyframes fadeInUp {
+    from {
+           opacity: 0;
+            transform: translateY(20px);
+        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+.auth-card {
+    animation: fadeInUp 0.6s ease;
+}
