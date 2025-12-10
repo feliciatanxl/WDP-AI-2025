@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -187,7 +188,9 @@
             <button id="close-detail" class="close-btn">&times;</button>
             <h2 id="detail-name"></h2>
             <p id="detail-price"></p>
-            <ul id="detail-description" class="detail-description"></ul>
+            <p id="detail-stock" class="text-muted"></p>
+            <ul id="detail-description" class="detail-description"></ul> <!--need to change in purple vsc-->
+
 
 
             <div class="quantity-wrapper">
@@ -253,24 +256,22 @@
             const priceEl = document.getElementById('detail-price');
             const descEl = document.getElementById('detail-description');
             const qtyEl = document.getElementById('qty-number');
-
-
-            //const fullLink = document.getElementById('detail-full-link');
             const addToCartBtn = document.querySelector('.add-cart-btn');
 
             let currentProductId = null;
 
             const products = {
-                1: { name: "Mizuna", price: "$2.50", description: ["A crisp, peppery Japanese leafy green."], fullLink: "#" },
-                2: { name: "Chris Green Lettuce", price: "$2.80", description: ["A vibrant, tender lettuce variety."], fullLink: "#" },
-                3: { name: "Lollo Bionda Lettuce", price: "$3.20", description: ["A visually striking lettuce with frilly leaves."], fullLink: "#" },
-                4: { name: "Cos Lettuce", price: "$3.00", description: ["A crisp, upright lettuce variety."], fullLink: "#" },
-                5: { name: "Red Pak Choy", price: "$4.20", description: ["A vibrant Asian leafy green."], fullLink: "#" },
-                6: { name: "Xiao Bai Cai", price: "$2.80", description: ["A small, tender bok choy variety."], fullLink: "#" },
-                7: { name: "Jiu Bai Cai", price: "$3.30", description: ["A hardy, fast-growing leafy vegetable."], fullLink: "#" },
-                8: { name: "Mao Bai", price: "$3.40", description: ["A traditional leafy cabbage variety."], fullLink: "#" }
+                1: { name: "Mizuna", price: "$2.50", stock: 0, description: ["A crisp, peppery Japanese leafy green."], fullLink: "#" },
+                2: { name: "Chris Green Lettuce", price: "$2.80", stock: 10, description: ["A vibrant, tender lettuce variety."], fullLink: "#" },
+                3: { name: "Lollo Bionda Lettuce", price: "$3.20", stock: 15, description: ["A visually striking lettuce with frilly leaves."], fullLink: "#" },
+                4: { name: "Cos Lettuce", price: "$3.00", stock: 12, description: ["A crisp, upright lettuce variety."], fullLink: "#" },
+                5: { name: "Red Pak Choy", price: "$4.20", stock: 8, description: ["A vibrant Asian leafy green."], fullLink: "#" },
+                6: { name: "Xiao Bai Cai", price: "$2.80", stock: 25, description: ["A small, tender bok choy variety."], fullLink: "#" },
+                7: { name: "Jiu Bai Cai", price: "$3.30", stock: 18, description: ["A hardy, fast-growing leafy vegetable."], fullLink: "#" },
+                8: { name: "Mao Bai", price: "$3.40", stock: 14, description: ["A traditional leafy cabbage variety."], fullLink: "#" }
             };
 
+            /* OPEN MODAL */
             produceItems.forEach(item => {
                 item.querySelector('.view-detail-btn').addEventListener('click', () => {
                     const id = item.dataset.id;
@@ -287,34 +288,79 @@
                         descEl.appendChild(li);
                     });
 
-                    qtyEl.value = 1;
-                    //fullLink.href = product.fullLink;
+                    qty = 1;
+                    qtyEl.textContent = qty;
+
+                    document.getElementById("detail-stock").textContent =
+                        "Available stock: " + product.stock;
 
                     modal.classList.add("active");
                 });
             });
 
+            /* CLOSE MODAL */
             closeBtn.addEventListener('click', () => modal.classList.remove('active'));
             modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
 
+            /* ADD TO CART — STOCK WILL NEVER GO BELOW 0 */
             addToCartBtn.addEventListener('click', () => {
                 if (!currentProductId) return;
+
+                const product = products[currentProductId];
+
+                if (qty > product.stock) {
+                    alert("Sorry, you cannot add more than the available stock.");
+                    return;
+                }
 
                 let cart = JSON.parse(localStorage.getItem("farmCart")) || [];
 
                 cart.push({
                     id: currentProductId,
-                    name: products[currentProductId].name,
-                    price: products[currentProductId].price,
-                    qty: parseInt(qtyEl.textContent)
-
+                    name: product.name,
+                    price: product.price,
+                    qty: qty
                 });
 
                 localStorage.setItem("farmCart", JSON.stringify(cart));
+
+                // 🔒 Prevent stock going below 0
+                product.stock = Math.max(0, product.stock - qty);
+
                 window.location.href = "orders.html";
             });
 
-        });
+            /* ⭐⭐⭐ QUANTITY SYSTEM WITH STOCK LIMIT ⭐⭐⭐ */
+            let qty = 1;
+
+            const qtyNum = document.getElementById("qty-number");
+            const qtyMinus = document.getElementById("qty-minus");
+            const qtyPlus = document.getElementById("qty-plus");
+
+            qtyMinus.addEventListener("click", () => {
+                if (qty > 1) {
+                    qty--;
+                    qtyNum.textContent = qty;
+                }
+            });
+
+            qtyPlus.addEventListener("click", () => {
+                const maxStock = products[currentProductId].stock;
+
+                if (maxStock === 0) {
+                    alert("This item is out of stock.");
+                    return;
+                }
+
+                if (qty < maxStock) {
+                    qty++;
+                    qtyNum.textContent = qty;
+                }
+            });
+
+        }); // END DOMContentLoaded
+
+
 
         /* SCROLL TO TOP */
         const scrollTopBtn = document.getElementById("scrollTopBtn");
@@ -328,7 +374,7 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
-        /* SEARCH FUNCTION */
+        /* SEARCH BAR */
         document.getElementById("search").addEventListener("keyup", function () {
             const text = this.value.toLowerCase();
             const products = document.querySelectorAll(".produce-item");
@@ -338,25 +384,6 @@
                 product.style.display = name.includes(text) ? "block" : "none";
             });
         });
-        //Quantity
-        let qty = 1;
-
-        const qtyNum = document.getElementById("qty-number");
-        const qtyMinus = document.getElementById("qty-minus");
-        const qtyPlus = document.getElementById("qty-plus");
-
-        qtyMinus.addEventListener("click", () => {
-            if (qty > 1) qty--;
-            qtyNum.textContent = qty;
-        });
-
-        qtyPlus.addEventListener("click", () => {
-            qty++;
-            qtyNum.textContent = qty;
-        });
-
-
-
     </script>
 
 </body>
