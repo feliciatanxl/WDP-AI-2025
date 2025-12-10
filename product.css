@@ -50,7 +50,7 @@ body {
     width: 70%;
     padding: 10px 0;
     border-radius: 25px;
-    border: 1px solid #464646;
+    border: 1.5px solid #464646;
     background: #fff;
     cursor: pointer;
     font-weight: 600;
@@ -109,13 +109,7 @@ body {
         font-size: 20px;
     }
 
-    .detail-content ul {
-        list-style: disc;
-        text-align: left;
-        padding-left: 20px;
-        margin-bottom: 28px;
-        line-height: 1.6;
-    }
+    
 
     .detail-content .close-btn {
         position: absolute;
@@ -132,6 +126,12 @@ body {
         width: 80px;
         margin-bottom: 22px;
     }
+.detail-description {
+    list-style: none; /* removes bullet */
+    padding: 0;
+    text-align: center;
+}
+
 
 
 .add-cart-btn {
@@ -176,22 +176,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* spacing */
+    gap: 20px; 
     width: 100%;
-    margin: 0 auto; /* centers it */
+    margin: 0 auto; 
 }
 
 .quantity-btn {
     width: 36px;
     height: 36px;
-    border-radius: 50%; /* perfect circle */
+    border-radius: 50%;
     border: 1px solid #e6e6e6;
     background: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 20px; /* clean minimalist icon */
+    font-size: 20px; 
     user-select: none;
     transition: 0.2s ease;
 }
@@ -211,6 +211,24 @@ body {
     justify-content: center;
     margin: 20px 0;
 }
+
+    .quantity-btn:hover {
+        background: #ececec;
+    }
+
+.quantity-number {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.quantity-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+
 
 
 
