@@ -96,7 +96,6 @@
                                     <i class="bi bi-envelope-fill me-3 fs-5 text-success"></i>
                                     <div>
                                         <p class="mb-0 fw-bold">Email</p>
-                                        <p class="mb-0 text-muted">info@AI.com.sg</p>
                                     </div>
                                 </div>
                             </div>
@@ -165,21 +164,19 @@
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    document.querySelector('.nav-link.active[href="contact.html"]')?.classList.remove('active');
+                    accountLink.classList.remove('active');
 
                     if (userRole === 'admin') {
                         accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html'; 
-                        accountLink.classList.remove('active'); 
-                    } else { 
-                        accountLink.textContent = 'User';
+                        accountLink.href = 'admin.html';
+                    } else {
+                        accountLink.textContent = 'User'; 
                         accountLink.href = 'myaccount.html';
-                        accountLink.classList.remove('active');
                     }
                 } else {
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
-                    accountLink.classList.remove('active'); 
+                    accountLink.classList.remove('active');
                 }
             }
         }
