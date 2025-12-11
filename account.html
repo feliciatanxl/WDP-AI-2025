@@ -303,7 +303,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // FUNCTION to update the navigation link based on status/role in Local Storage
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -313,10 +312,10 @@
                 if (isLoggedIn) {
                     if (userRole === 'admin') {
                         accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html'; // Redirect to admin dashboard
+                        accountLink.href = 'admin.html'; 
                     } else {
-                        accountLink.textContent = 'My Account';
-                        accountLink.href = 'myaccount.html'; // Redirect to user dashboard
+                        accountLink.textContent = 'User';
+                        accountLink.href = 'myaccount.html'; 
                     }
                 } else {
                     accountLink.textContent = 'Account';
