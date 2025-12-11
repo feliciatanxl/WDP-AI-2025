@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account | Meod Farm</title>
-   <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png">
+    <title>My Account | Leaf Plant</title>
+    <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
     <style>
         :root {
             --meod-green: #2d5016;
+            --primary-green: #2d6a4f;
+            --secondary-green: #52b788;
         }
-        
+
         body {
             padding-top: 80px;
         }
-        
+
         .account-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .account-header {
             background: white;
             border-radius: 10px;
@@ -32,7 +35,7 @@
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        
+
         .user-avatar {
             width: 80px;
             height: 80px;
@@ -45,7 +48,7 @@
             font-size: 2rem;
             font-weight: bold;
         }
-        
+
         .account-sidebar {
             background: white;
             border-radius: 10px;
@@ -53,53 +56,53 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             height: fit-content;
         }
-        
-        .account-sidebar .nav-link {
-            color: #333;
-            padding: 12px 15px;
-            margin: 5px 0;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        
-        .account-sidebar .nav-link:hover,
-        .account-sidebar .nav-link.active {
-            background-color: rgba(45, 80, 22, 0.1);
-            color: var(--meod-green);
-        }
-        
-        .account-sidebar .nav-link i {
-            width: 20px;
-            margin-right: 10px;
-        }
-        
+
+            .account-sidebar .nav-link {
+                color: #333;
+                padding: 12px 15px;
+                margin: 5px 0;
+                border-radius: 8px;
+                transition: all 0.3s;
+            }
+
+                .account-sidebar .nav-link:hover,
+                .account-sidebar .nav-link.active {
+                    background-color: rgba(45, 80, 22, 0.1);
+                    color: var(--meod-green);
+                }
+
+                .account-sidebar .nav-link i {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+
         .account-content {
             background: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        
+
         .account-section {
             display: none;
         }
-        
-        .account-section.active {
-            display: block;
-        }
-        
+
+            .account-section.active {
+                display: block;
+            }
+
         .section-title {
             color: var(--meod-green);
             border-bottom: 2px solid rgba(45, 80, 22, 0.1);
             padding-bottom: 10px;
             margin-bottom: 25px;
         }
-        
+
         .form-control:focus {
             border-color: var(--meod-green);
             box-shadow: 0 0 0 0.2rem rgba(45, 80, 22, 0.1);
         }
-        
+
         .btn-meod {
             background-color: var(--meod-green);
             color: white;
@@ -108,13 +111,13 @@
             border-radius: 6px;
             transition: all 0.3s;
         }
-        
-        .btn-meod:hover {
-            background-color: #3a6b1e;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
-        }
-        
+
+            .btn-meod:hover {
+                background-color: #3a6b1e;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
+            }
+
         .order-card {
             border: 1px solid #e9ecef;
             border-radius: 8px;
@@ -122,42 +125,42 @@
             margin-bottom: 15px;
             transition: all 0.3s;
         }
-        
-        .order-card:hover {
-            border-color: var(--meod-green);
-            background: rgba(45, 80, 22, 0.02);
-        }
-        
+
+            .order-card:hover {
+                border-color: var(--meod-green);
+                background: rgba(45, 80, 22, 0.02);
+            }
+
         .order-status {
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 500;
         }
-        
+
         .status-delivered {
             background: rgba(45, 80, 22, 0.1);
             color: var(--meod-green);
         }
-        
+
         .status-pending {
             background: rgba(255, 193, 7, 0.1);
             color: #ffc107;
         }
-        
+
         @media (max-width: 768px) {
             body {
                 padding-top: 70px;
             }
-            
+
             .account-container {
                 padding: 10px;
             }
-            
+
             .account-header {
                 padding: 20px;
             }
-            
+
             .account-content {
                 padding: 20px;
             }
@@ -179,7 +182,7 @@
                     <li class="nav-item"><a class="nav-link" href="product.html">Our Produce</a></li>
                     <li class="nav-item"><a class="nav-link" href="article.html">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html">Account</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html" id="accountLink">Account</a></li>
                 </ul>
             </div>
         </div>
@@ -213,7 +216,7 @@
                             <i class="bi bi-basket"></i> My Orders
                         </a>
                         <hr>
-                        <a class="nav-link text-danger" href="index.html">
+                        <a class="nav-link text-danger" href="#" onclick="logoutUser(event)">
                             <i class="bi bi-box-arrow-right"></i> Logout
                         </a>
                     </nav>
@@ -332,26 +335,55 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
+        function updateAccountLink() {
+            const accountLink = document.getElementById("accountLink");
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('userRole');
+
+            if (accountLink) {
+                if (isLoggedIn) {
+                    if (userRole === 'admin') {
+                        accountLink.textContent = 'Admin Panel';
+                        accountLink.href = 'admin.html'; 
+                        accountLink.classList.remove('active');
+                    } else {
+                        accountLink.textContent = 'My Account';
+                        accountLink.href = 'myaccount.html';
+                    }
+                } else {
+                    accountLink.textContent = 'Account';
+                    accountLink.href = 'account.html';
+                }
+            }
+        }
+
+        function logoutUser(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            window.location.href = 'index.html';
+        }
+
         function showSection(event, sectionId) {
             event.preventDefault();
-            
+
             document.querySelectorAll('.account-section').forEach(section => {
                 section.classList.remove('active');
             });
-            
+
             document.querySelectorAll('.account-sidebar .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-            
+
             document.getElementById(sectionId).classList.add('active');
             event.currentTarget.classList.add('active');
             window.location.hash = sectionId;
-            
+
             return false;
         }
-        
+
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById(hash)) {
@@ -367,6 +399,7 @@
                     targetLink.classList.add('active');
                 }
             }
+            updateAccountLink();
         });
     </script>
 </body>

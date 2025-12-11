@@ -1,11 +1,182 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image\Green Minimalist Leaf Plant Logo.png" alt="Logo Png" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Our Produce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="article.html">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html" id="accountLink">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <main class="page-content py-5 mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="display-4 text-primary-green">Admin Panel</h1>
+                <button class="btn btn-admin-logout btn-lg" onclick="logoutAdmin(event)">
+                    <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                </button>
+            </div>
+            <p class="lead">Welcome, Administrator. This dashboard is for managing the site, orders, and users.</p>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-basket me-2"></i> Manage Orders</h5>
+                            <p class="card-text">View and update customer order status (processing, shipped, delivered).</p>
+                            <a href="#" class="btn btn-sm btn-outline-success">View All Orders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-person-fill-gear me-2"></i> User Management</h5>
+                            <p class="card-text">Oversee user accounts, roles (user/admin), and personal information.</p>
+                            <a href="#" class="btn btn-sm btn-outline-success">View All Users</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-pencil-square me-2"></i> Content & Products</h5>
+                            <p class="card-text">Edit farm produce, update prices, and manage articles/blog posts.</p>
+                            <a href="#" class="btn btn-sm btn-outline-success">Edit Products</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <footer class="custom-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="image/Green Minimalist Leaf Plant Logo_Name.png" alt="AI Logo">
+            </div>
+
+            <div class="footer-info">
+                <h5>Address</h5>
+                <p>123 Main Street<br>Singapore 123456</p>
+            </div>
+
+            <div class="footer-info">
+                <h5>Email</h5>
+                <p>info@AI.com.sg</p>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="footer-copy">Copyright © 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
+    </footer>
+    <script>
+        // FUNCTION to handle Admin Logout
+        function logoutAdmin(event) {
+            event.preventDefault();
+            // Clear Local Storage items set during login
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            alert('Admin logged out successfully.');
+            // Redirect to the login page or homepage
+            window.location.href = 'index.html';
+        }
+
+        // FUNCTION to update the navigation link based on status/role in Local Storage
+        function updateAccountLink() {
+            const accountLink = document.getElementById("accountLink");
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('userRole');
+
+            if (accountLink) {
+                // If the user is logged in, update the link to their dashboard
+                if (isLoggedIn) {
+                    if (userRole === 'admin') {
+                        accountLink.textContent = 'Admin Panel';
+                        accountLink.href = 'admin.html';
+                        // Ensure this link is active when on admin.html
+                        accountLink.classList.add('active');
+                    } else {
+                        accountLink.textContent = 'My Account';
+                        accountLink.href = 'myaccount.html';
+                        // Remove active class from other pages if logged in as user
+                        document.querySelector('.nav-link.active')?.classList.remove('active');
+                    }
+                } else {
+                    // Logged Out State
+                    accountLink.textContent = 'Account';
+                    accountLink.href = 'account.html';
+                    // Remove active class from this link if logged out (it won't be the current page)
+                    accountLink.classList.remove('active');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the user is actually an admin when loading this page
+            const userRole = localStorage.getItem('userRole');
+            if (userRole !== 'admin') {
+                // Prevent non-admins from viewing the admin page content
+                alert('Access Denied. You must be an administrator to view this page.');
+                window.location.href = 'account.html'; // Redirect to login
+                return; // Stop script execution
+            }
+
+            updateAccountLink(); // Run the new function on page load to set the initial nav state
+
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', function () {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollTopBtn.style.display = "block";
+                    } else {
+                        scrollTopBtn.style.display = "none";
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

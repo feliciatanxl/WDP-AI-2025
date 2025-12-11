@@ -1,0 +1,15 @@
+﻿.text-primary-green {
+    color: #2d6a4f !important;
+}
+
+.btn-admin-logout {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-admin-logout:hover {
+        background-color: #c82333;
+        color: white;
+    }
