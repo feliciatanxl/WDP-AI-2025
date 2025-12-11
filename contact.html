@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="contact.css">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
@@ -42,7 +44,7 @@
 
                     <div class="col-lg-6 d-flex align-items-stretch">
 
-                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column">
+                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column" action="https://formspree.io/f/mgvgnnzd" method="POST">
 
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
@@ -58,8 +60,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Message</label>
-                                <textarea name="message" class="form-control" rows="4" maxlength="500" required></textarea>
-                                <div id="charCount" class="text-end">0 / 500</div>
+                                <textarea name="message" class="form-control" rows="4" required></textarea>
+                            </div>
+
+                            <div class="mb-3 recaptcha-wrapper">
+                                <div class="g-recaptcha" data-sitekey="6LeHaScsAAAAAASqsawgrRXJ3lkFe-CsYeIqRY_F"></div>
                             </div>
 
                             <button type="submit" class="btn btn-custom w-100 mt-auto">Send</button>
@@ -156,35 +161,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const contactForm = document.getElementById("contactForm");
-            const charCount = document.getElementById("charCount");
-            const messageInput = contactForm ? contactForm.querySelector('[name="message"]') : null;
-
-            if (messageInput && charCount) {
-                charCount.textContent = `${messageInput.value.length} / 500`;
-
-                messageInput.addEventListener("input", function () {
-                    charCount.textContent = `${messageInput.value.length} / 500`;
-                });
-            }
 
             if (contactForm) {
                 contactForm.addEventListener("submit", function (event) {
-                    event.preventDefault();
 
-                    const formData = {
-                        name: contactForm.name ? contactForm.name.value : '',
-                        email: contactForm.email ? contactForm.email.value : '',
-                        phone: contactForm.phone ? contactForm.phone.value : '',
-                        reason: contactForm.reason ? contactForm.reason.value : '',
-                        message: contactForm.message ? contactForm.message.value : ''
-                    };
-
-                    sessionStorage.setItem("formData", JSON.stringify(formData));
-                    window.location.href = "thankyou.html";
+                    if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
+                        event.preventDefault();
+                        alert("Please complete the 'I'm not a robot' check.");
+                        return;
+                    }
                 });
             }
-
-            // EXISTING: Scroll Top Button Logic
             const scrollTopBtn = document.getElementById("scrollTopBtn");
             if (scrollTopBtn) {
                 window.addEventListener('scroll', function () {
@@ -203,12 +190,9 @@
                 });
             }
 
-            // NEW: Chat Pop-out Toggle Function
-            // This function is called by the onclick attribute on the chat buttons
             window.toggleChat = function () {
                 const chatBox = document.getElementById('chat-box');
 
-                // Toggle the display property
                 if (chatBox.style.display === 'none' || chatBox.style.display === '') {
                     chatBox.style.display = 'block';
                 } else {
