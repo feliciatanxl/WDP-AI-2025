@@ -44,8 +44,7 @@
 
                     <div class="col-lg-6 d-flex align-items-stretch">
 
-                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column" action="https://formspree.io/f/mgvgnnzd" method="POST">
-
+                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control" required>
@@ -156,6 +155,7 @@
 
         <p class="footer-copy">Copyright © 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
@@ -170,7 +170,7 @@
                         accountLink.textContent = 'Admin Panel';
                         accountLink.href = 'admin.html';
                     } else {
-                        accountLink.textContent = 'User'; 
+                        accountLink.textContent = 'User';
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
@@ -189,11 +189,28 @@
             if (contactForm) {
                 contactForm.addEventListener("submit", function (event) {
 
+                    // 1. Check reCAPTCHA
                     if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
                         event.preventDefault();
                         alert("Please complete the 'I'm not a robot' check.");
                         return;
                     }
+
+                    // 2. Prevent default submission
+                    event.preventDefault();
+
+                    // --- NEW FIX: Save form data before redirecting ---
+                    const nameInput = contactForm.querySelector('input[name="name"]').value;
+                    const emailInput = contactForm.querySelector('input[name="email"]').value;
+                    const messageInput = contactForm.querySelector('textarea[name="message"]').value;
+
+                    sessionStorage.setItem('contactName', nameInput);
+                    sessionStorage.setItem('contactEmail', emailInput);
+                    sessionStorage.setItem('contactMessage', messageInput);
+                    sessionStorage.setItem('isFormSubmitted', 'true'); // Flag for thankyou.html
+
+                    // 3. Redirect to the thank you page
+                    window.location.href = 'thankyou.html';
                 });
             }
             const scrollTopBtn = document.getElementById("scrollTopBtn");
@@ -225,6 +242,5 @@
             }
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
