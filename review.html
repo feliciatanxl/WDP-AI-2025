@@ -49,7 +49,7 @@
 
             <form id="review-form">
                 
-                <div class="mb-5 text-center">
+                <div class="mb-5 text-center" id="product-container">
                     <label class="form-label">How would you rate the items in your cart?</label>
                     <div class="rating-group" id="product-rating">
                         <i class="bi bi-star-fill star-label" data-value="1"></i>
@@ -59,9 +59,10 @@
                         <i class="bi bi-star-fill star-label" data-value="5"></i>
                     </div>
                     <input type="hidden" name="product_rating" id="input-product-rating">
+                    <div class="validation-msg">Please select a rating for our products.</div>
                 </div>
 
-                <div class="mb-5 text-center">
+                <div class="mb-5 text-center" id="flow-container">
                     <label class="form-label">How easy was the checkout process?</label>
                     <div class="rating-group" id="flow-rating">
                         <i class="bi bi-star-fill star-label" data-value="1"></i>
@@ -71,11 +72,13 @@
                         <i class="bi bi-star-fill star-label" data-value="5"></i>
                     </div>
                     <input type="hidden" name="flow_rating" id="input-flow-rating">
+                    <div class="validation-msg">Please rate the checkout process.</div>
                 </div>
 
                 <div class="mb-4">
                     <label class="form-label text-start ms-2">Additional Comments (Optional)</label>
-                    <textarea class="form-control modern-textarea" rows="4" placeholder="Tell us what you loved or what we can improve..."></textarea>
+                    <textarea class="form-control modern-textarea" rows="4" maxlength="500" placeholder="Tell us what you loved or what we can improve..."></textarea>
+                    <div class="text-end text-muted small mt-1">Max 500 characters</div>
                 </div>
 
                 <div class="text-center">
@@ -96,7 +99,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Function to handle star interactions
+            // Function to handle star interactions (UNCHANGED)
             function setupRating(containerId, inputId) {
                 const container = document.getElementById(containerId);
                 const stars = container.querySelectorAll('.star-label');
@@ -138,6 +141,10 @@
                             if (sVal <= value) s.classList.add('star-filled');
                             else s.classList.remove('star-filled');
                         });
+                        
+                        // Clear validation error when a star is selected
+                        container.closest('.mb-5').querySelector('.validation-msg').classList.remove('show');
+                        container.classList.remove('input-error');
                     });
                 });
             }
@@ -146,23 +153,56 @@
             setupRating('product-rating', 'input-product-rating');
             setupRating('flow-rating', 'input-flow-rating');
 
-            // Handle Submit
+            // Handle Submit with Validation (UPDATED)
             document.getElementById('review-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // You would typically send data to a server here.
-                // For now, we simulate success and redirect.
+                // 1. Get Values
+                const productRating = document.getElementById('input-product-rating').value;
+                const flowRating = document.getElementById('input-flow-rating').value;
                 
-                const btn = e.target.querySelector('button[type="submit"]');
-                const originalText = btn.innerText;
+                // 2. Get Containers for Visual Feedback
+                // Note: product-container and flow-container are the outer divs added in HTML
+                const productContainer = document.getElementById('product-container');
+                const flowContainer = document.getElementById('flow-container');
                 
-                btn.disabled = true;
-                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+                let isValid = true;
 
-                setTimeout(() => {
-                    alert("Thank you for your feedback!");
-                    window.location.href = 'index.html';
-                }, 1500);
+                // 3. Validate Product Rating
+                if (!productRating) {
+                    const ratingGroup = productContainer.querySelector('.rating-group');
+                    ratingGroup.classList.add('input-error');
+                    productContainer.querySelector('.validation-msg').classList.add('show');
+                    
+                    // Remove animation class after it plays so it can be triggered again
+                    setTimeout(() => ratingGroup.classList.remove('input-error'), 500);
+                    isValid = false;
+                } else {
+                    productContainer.querySelector('.validation-msg').classList.remove('show');
+                }
+
+                // 4. Validate Flow Rating
+                if (!flowRating) {
+                    const ratingGroup = flowContainer.querySelector('.rating-group');
+                    ratingGroup.classList.add('input-error');
+                    flowContainer.querySelector('.validation-msg').classList.add('show');
+                    setTimeout(() => ratingGroup.classList.remove('input-error'), 500);
+                    isValid = false;
+                } else {
+                    flowContainer.querySelector('.validation-msg').classList.remove('show');
+                }
+
+                // 5. Submit only if Valid
+                if (isValid) {
+                    const btn = e.target.querySelector('button[type="submit"]');
+                    btn.disabled = true;
+                    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+
+                    setTimeout(() => {
+                        alert("Thank you for your feedback!");
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }
             });
         });
     </script>
