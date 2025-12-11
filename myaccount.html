@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="style.css">-->
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
@@ -49,12 +48,26 @@
             font-weight: bold;
         }
 
+        /* Essential Flexbox for equal height columns */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        /* New: Make the content column a Flex container */
+        .col-lg-9 {
+            display: flex;
+            flex-direction: column;
+        }
+
         .account-sidebar {
             background: white;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            height: fit-content;
+            /* height: 100% is still necessary for the sidebar container itself */
+            height: 100%;
         }
 
             .account-sidebar .nav-link {
@@ -81,6 +94,10 @@
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            /* FIX: Use flex-grow to dynamically expand to the tallest sibling */
+            flex-grow: 1;
+            /* Important: Also ensure it doesn't get smaller than the tallest content */
+            min-height: 500px; /* Reduced, but keep a sensible minimum */
         }
 
         .account-section {
@@ -148,6 +165,39 @@
             color: #ffc107;
         }
 
+        /* --- STYLES FOR PAYMENT METHODS --- */
+        .payment-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s;
+        }
+
+            .payment-card:hover {
+                border-color: var(--meod-green);
+                background: rgba(45, 80, 22, 0.02);
+            }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--meod-green);
+            margin-right: 15px;
+        }
+
+        .card-details h5 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .card-actions .btn {
+            margin-left: 10px;
+        }
+        /* ------------------------------------- */
+
         @media (max-width: 768px) {
             body {
                 padding-top: 70px;
@@ -206,17 +256,17 @@
             <div class="col-lg-3 mb-4">
                 <div class="account-sidebar">
                     <nav class="nav flex-column">
-                        <a class="nav-link active" href="#" onclick="return showSection(event, 'dashboard')">
-                            <i class="bi bi-grid"></i> Dashboard
-                        </a>
-                        <a class="nav-link" href="#" onclick="return showSection(event, 'profile')">
+                        <a class="nav-link active" href="" onclick="return showSection(event, 'profile')">
                             <i class="bi bi-person"></i> My Profile
                         </a>
-                        <a class="nav-link" href="#" onclick="return showSection(event, 'orders')">
+                        <a class="nav-link" href="" onclick="return showSection(event, 'orders')">
                             <i class="bi bi-basket"></i> My Orders
                         </a>
+                        <a class="nav-link" href="" onclick="return showSection(event, 'payments')">
+                            <i class="bi bi-credit-card"></i> Payment Methods
+                        </a>
                         <hr>
-                        <a class="nav-link text-danger" href="#" onclick="logoutUser(event)">
+                        <a class="nav-link text-danger" href="" onclick="logoutUser(event)">
                             <i class="bi bi-box-arrow-right"></i> Logout
                         </a>
                     </nav>
@@ -225,27 +275,8 @@
 
             <div class="col-lg-9">
                 <div class="account-content">
-                    <div id="dashboard" class="account-section active">
-                        <h3 class="section-title">Dashboard</h3>
-                        <h4 class="mb-3">Recent Orders</h4>
-                        <div class="order-card">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <h5>Mizuna</h5>
-                                    <p class="text-muted mb-0">Order #MEOD-2024-0012</p>
-                                    <small class="text-muted">Placed on: 15 Mar 2024</small>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="mb-0">$2.50</p>
-                                </div>
-                                <div class="col-md-3 text-end">
-                                    <span class="order-status status-pending">Processing</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div id="profile" class="account-section">
+                    <div id="profile" class="account-section active">
                         <h3 class="section-title">My Profile</h3>
                         <form>
                             <div class="row mb-3">
@@ -302,6 +333,46 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="payments" class="account-section">
+                        <h3 class="section-title">Payment Methods</h3>
+
+                        <button class="btn btn-meod mb-4">
+                            <i class="bi bi-plus-circle me-2"></i> Add New Card
+                        </button>
+
+                        <h4 class="mb-3">Saved Cards</h4>
+
+                        <div class="payment-card">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-credit-card card-icon"></i>
+                                <div class="card-details">
+                                    <h5>Visa ending in 4242</h5>
+                                    <p class="text-muted mb-0">Expires 10/2026</p>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </div>
+                        </div>
+
+                        <div class="payment-card">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-credit-card-2-front card-icon"></i>
+                                <div class="card-details">
+                                    <h5>Mastercard ending in 1987</h5>
+                                    <p class="text-muted mb-0">Expires 05/2027</p>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </div>
+                        </div>
+
+                        <p class="text-muted mt-4">Your payment information is securely stored and encrypted.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -346,7 +417,7 @@
                 if (isLoggedIn) {
                     if (userRole === 'admin') {
                         accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html'; 
+                        accountLink.href = 'admin.html';
                         accountLink.classList.remove('active');
                     } else {
                         accountLink.textContent = 'User';
@@ -379,26 +450,39 @@
 
             document.getElementById(sectionId).classList.add('active');
             event.currentTarget.classList.add('active');
-            window.location.hash = sectionId;
+            if (window.history.pushState) {
+                window.history.pushState(null, null, '#' + sectionId);
+            } else {
+                window.location.hash = sectionId;
+            }
 
             return false;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
+            let targetSectionId = 'profile';
+
             if (hash && document.getElementById(hash)) {
-                document.querySelectorAll('.account-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.querySelectorAll('.account-sidebar .nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                document.getElementById(hash).classList.add('active');
-                const targetLink = document.querySelector(`[onclick*="${hash}"]`);
+                targetSectionId = hash;
+            }
+
+            document.querySelectorAll('.account-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.account-sidebar .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                const targetLink = document.querySelector(`.account-sidebar .nav-link[onclick*="'${targetSectionId}'"]`);
                 if (targetLink) {
                     targetLink.classList.add('active');
                 }
             }
+
             updateAccountLink();
         });
     </script>
