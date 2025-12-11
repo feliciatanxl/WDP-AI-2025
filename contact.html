@@ -160,37 +160,31 @@
     <script>
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
-
-            // === CORRECTED: Now reads login status from Local Storage ===
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
-            // =========================================================
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    // Ensure 'Contact Us' link does not appear 'active' when a user is logged in
                     document.querySelector('.nav-link.active[href="contact.html"]')?.classList.remove('active');
 
                     if (userRole === 'admin') {
                         accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html'; // Changed to admin.html as per your provided flow
-                        accountLink.classList.remove('active'); // Since Contact Us is active on this page
-                    } else { // User/General Logged In
-                        accountLink.textContent = 'My Account';
+                        accountLink.href = 'admin.html'; 
+                        accountLink.classList.remove('active'); 
+                    } else { 
+                        accountLink.textContent = 'User';
                         accountLink.href = 'myaccount.html';
-                        accountLink.classList.remove('active'); // Since Contact Us is active on this page
+                        accountLink.classList.remove('active');
                     }
                 } else {
-                    // Logged Out State (Default)
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
-                    accountLink.classList.remove('active'); // Contact Us is active
+                    accountLink.classList.remove('active'); 
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // Run the new function on page load to set the initial nav state
             updateAccountLink();
 
             const contactForm = document.getElementById("contactForm");
