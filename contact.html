@@ -191,17 +191,14 @@
             if (contactForm) {
                 contactForm.addEventListener("submit", function (event) {
 
-                    // 1. Check reCAPTCHA
                     if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
                         event.preventDefault();
                         alert("Please complete the 'I'm not a robot' check.");
                         return;
                     }
 
-                    // 2. Prevent default submission
                     event.preventDefault();
 
-                    // --- NEW FIX: Save form data before redirecting ---
                     const nameInput = contactForm.querySelector('input[name="name"]').value;
                     const emailInput = contactForm.querySelector('input[name="email"]').value;
                     const messageInput = contactForm.querySelector('textarea[name="message"]').value;
@@ -209,9 +206,8 @@
                     sessionStorage.setItem('contactName', nameInput);
                     sessionStorage.setItem('contactEmail', emailInput);
                     sessionStorage.setItem('contactMessage', messageInput);
-                    sessionStorage.setItem('isFormSubmitted', 'true'); // Flag for thankyou.html
+                    sessionStorage.setItem('isFormSubmitted', 'true'); 
 
-                    // 3. Redirect to the thank you page
                     window.location.href = 'thankyou.html';
                 });
             }
