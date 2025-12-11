@@ -221,17 +221,13 @@
     </footer>
 
     <script>
-        // NEW FUNCTION: Updates Account link based on login status from Local Storage
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
-
-            // Read status from Local Storage
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    // Ensure the account link is not active on the product page
                     accountLink.classList.remove('active');
 
                     if (userRole === 'admin') {
@@ -242,7 +238,6 @@
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
-                    // Logged Out State
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
                     accountLink.classList.remove('active');
@@ -252,9 +247,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            updateAccountLink(); // Run the dynamic link update on page load
+            updateAccountLink(); 
 
-            /* MODAL, CART & PRODUCT DETAILS */
             const produceItems = document.querySelectorAll('.produce-item');
             const modal = document.getElementById('product-detail');
             const closeBtn = document.getElementById('close-detail');
@@ -277,7 +271,6 @@
                 8: { name: "Mao Bai", price: "$3.40", stock: 14, description: ["A traditional leafy cabbage variety."], fullLink: "#" }
             };
 
-            /* OPEN MODAL */
             produceItems.forEach(item => {
                 item.querySelector('.view-detail-btn').addEventListener('click', () => {
                     const id = item.dataset.id;
@@ -304,11 +297,9 @@
                 });
             });
 
-            /* CLOSE MODAL */
             closeBtn.addEventListener('click', () => modal.classList.remove('active'));
             modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
 
-            /* ADD TO CART — STOCK WILL NEVER GO BELOW 0 */
             addToCartBtn.addEventListener('click', () => {
                 if (!currentProductId) return;
 
@@ -330,13 +321,11 @@
 
                 localStorage.setItem("farmCart", JSON.stringify(cart));
 
-                // 🔒 Prevent stock going below 0
                 product.stock = Math.max(0, product.stock - qty);
 
                 window.location.href = "orders.html";
             });
 
-            /* ⭐⭐⭐ QUANTITY SYSTEM WITH STOCK LIMIT ⭐⭐⭐ */
             let qty = 1;
 
             const qtyNum = document.getElementById("qty-number");
@@ -364,11 +353,9 @@
                 }
             });
 
-        }); // END DOMContentLoaded
+        });
 
 
-
-        /* SCROLL TO TOP */
         const scrollTopBtn = document.getElementById("scrollTopBtn");
 
         window.onscroll = function () {
@@ -380,7 +367,6 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
-        /* SEARCH BAR */
         document.getElementById("search").addEventListener("keyup", function () {
             const text = this.value.toLowerCase();
             const products = document.querySelectorAll(".produce-item");

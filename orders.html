@@ -410,20 +410,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // NEW FUNCTION: Updates Account link based on login status from Local Storage
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
-
-            // Read status from Local Storage
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
-
-            // Find the "My Order" link which is active by default in the HTML
             const orderLink = document.querySelector('.nav-link.active[href="orders.html"]');
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    // Ensure the account link is not active when on the order/checkout page
                     accountLink.classList.remove('active');
 
                     if (userRole === 'admin') {
@@ -434,24 +428,19 @@
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
-                    // Logged Out State
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
                     accountLink.classList.remove('active');
 
-                    // Since the user is logged out, clicking 'My Order' should probably redirect to login
-                    // If My Order is treated as the generic 'Account' link when logged out, update it.
-                    // If this page requires login, we should probably redirect here, but for now we update the nav.
                     if (orderLink) {
-                        orderLink.textContent = 'My Order'; // Keep the text as is
-                        // We rely on other pages to have the correct active class management.
+                        orderLink.textContent = 'My Order'; 
                     }
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            updateAccountLink(); // Run the dynamic link update on page load
+            updateAccountLink(); 
 
             const cartContainer = document.getElementById('cart-container');
             const subtotalDisplay = document.getElementById('subtotal-display');
@@ -460,10 +449,8 @@
             const addMoreBtn = document.getElementById('add-more-container');
             const checkoutPanel = document.querySelector('.checkout-panel');
 
-            // 1. Get Cart
             let cart = JSON.parse(localStorage.getItem('farmCart')) || [];
 
-            // 2. Render Function
             function renderCart() {
                 cartContainer.innerHTML = '';
                 let total = 0;
@@ -483,13 +470,11 @@
                     headerCount.textContent = '0 items';
                     addMoreBtn.style.display = 'none';
 
-                    // Dim checkout area if empty
                     checkoutPanel.style.opacity = '0.5';
                     checkoutPanel.style.pointerEvents = 'none';
                     return;
                 }
 
-                // Enable checkout if items exist
                 checkoutPanel.style.opacity = '1';
                 checkoutPanel.style.pointerEvents = 'all';
                 addMoreBtn.style.display = 'block';
@@ -500,7 +485,6 @@
                     total += itemTotal;
                     itemCount += parseInt(item.qty);
 
-                    // Image Logic
                     const imgMap = {
                         1: 'image/mizuna.png',
                         2: 'image/chrisgreenlettuce.jpg',
@@ -547,7 +531,6 @@
                 headerCount.textContent = itemCount + (itemCount === 1 ? ' item' : ' items');
             }
 
-            // 3. Helper Functions
             window.updateQty = function (index, change) {
                 let newQty = cart[index].qty + change;
                 if (newQty < 1) return;
@@ -562,7 +545,6 @@
                 renderCart();
             };
 
-            // 4. Submit
             document.getElementById('checkout-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 alert("Thank you! Your order is being processed.");
@@ -570,7 +552,6 @@
                 window.location.href = 'index.html';
             });
 
-            // Initial Load
             renderCart();
         });
     </script>

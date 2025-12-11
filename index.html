@@ -220,7 +220,6 @@
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    // Ensure the account link is not active when on the homepage
                     accountLink.classList.remove('active');
 
                     if (userRole === 'admin') {
@@ -231,14 +230,11 @@
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
-                    // Logged Out State
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
                     accountLink.classList.remove('active');
                 }
             }
-
-            // Ensure the Home link is active on the homepage, regardless of login state
             if (homeLink) {
                 homeLink.classList.add('active');
             }
@@ -269,7 +265,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Run dynamic link update on load
             updateAccountLink();
 
             const counters = document.querySelectorAll('.stat-number');
@@ -293,7 +288,6 @@
                 observer.observe(counter);
             });
 
-            // Scroll button logic
             const scrollTopBtn = document.getElementById("scrollTopBtn");
             if (scrollTopBtn) {
                 window.addEventListener('scroll', function () {

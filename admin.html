@@ -105,58 +105,47 @@
         <p class="footer-copy">Copyright © 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
     </footer>
     <script>
-        // FUNCTION to handle Admin Logout
         function logoutAdmin(event) {
             event.preventDefault();
-            // Clear Local Storage items set during login
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('userRole');
             alert('Admin logged out successfully.');
-            // Redirect to the login page or homepage
             window.location.href = 'index.html';
         }
 
-        // FUNCTION to update the navigation link based on status/role in Local Storage
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
 
             if (accountLink) {
-                // If the user is logged in, update the link to their dashboard
                 if (isLoggedIn) {
                     if (userRole === 'admin') {
                         accountLink.textContent = 'Admin Panel';
                         accountLink.href = 'admin.html';
-                        // Ensure this link is active when on admin.html
                         accountLink.classList.add('active');
                     } else {
                         accountLink.textContent = 'My Account';
                         accountLink.href = 'myaccount.html';
-                        // Remove active class from other pages if logged in as user
                         document.querySelector('.nav-link.active')?.classList.remove('active');
                     }
                 } else {
-                    // Logged Out State
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
-                    // Remove active class from this link if logged out (it won't be the current page)
                     accountLink.classList.remove('active');
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // Check if the user is actually an admin when loading this page
             const userRole = localStorage.getItem('userRole');
             if (userRole !== 'admin') {
-                // Prevent non-admins from viewing the admin page content
                 alert('Access Denied. You must be an administrator to view this page.');
-                window.location.href = 'account.html'; // Redirect to login
-                return; // Stop script execution
+                window.location.href = 'account.html';
+                return;
             }
 
-            updateAccountLink(); // Run the new function on page load to set the initial nav state
+            updateAccountLink();
 
             const scrollTopBtn = document.getElementById("scrollTopBtn");
             if (scrollTopBtn) {

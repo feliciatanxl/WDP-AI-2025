@@ -324,7 +324,6 @@
             }
         }
 
-        // Run update on page load
         document.addEventListener('DOMContentLoaded', updateAccountLink);
 
         document.getElementById('loginForm').addEventListener('submit', function (e) {
@@ -336,38 +335,29 @@
             let userRole = null;
             let redirectPage = null;
 
-            // === TEMPORARY AUTHENTICATION LOGIC (FOR TESTING) ===
-            // 1. Admin Credentials
             if (email === 'admin@leafplant.com' && password === 'adminpass') {
                 userRole = 'admin';
                 redirectPage = 'admin.html';
             }
-            // 2. User Credentials
             else if (email === 'user@leafplant.com' && password === 'userpass') {
                 userRole = 'user';
                 redirectPage = 'myaccount.html';
             }
-            // 3. Failed Login
             else {
                 alert('Login Failed: Invalid email or password.');
                 return;
             }
 
-            // === SUCCESSFUL LOGIN: SET LOCAL STORAGE ===
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', userRole);
 
-            // Update navigation (optional, redirect handles it)
             updateAccountLink();
 
-            // Redirect to the correct dashboard
             window.location.href = redirectPage;
         });
 
-        // Update signup form to clear login status and redirect to user dashboard
         document.getElementById('signupForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            // Simulate a new user signing up (they are logged in as a standard user)
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', 'user');
             window.location.href = 'myaccount.html';

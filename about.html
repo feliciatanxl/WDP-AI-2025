@@ -137,17 +137,14 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // NEW FUNCTION: Updates Account link based on login status from Local Storage
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
 
-            // Read status from Local Storage
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
 
             if (accountLink) {
                 if (isLoggedIn) {
-                    // Ensure the account link is not active on the About Us page
                     accountLink.classList.remove('active');
 
                     if (userRole === 'admin') {
@@ -158,7 +155,6 @@
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
-                    // Logged Out State
                     accountLink.textContent = 'Account';
                     accountLink.href = 'account.html';
                     accountLink.classList.remove('active');
@@ -191,7 +187,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            updateAccountLink(); // Run the new function on page load
+            updateAccountLink();
 
             const counters = document.querySelectorAll('.stat-number');
 
