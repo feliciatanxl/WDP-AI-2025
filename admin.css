@@ -13,6 +13,7 @@
         background-color: #c82333;
         color: white;
     }
+
 :root {
     --primary-green: #2d6a4f;
     --secondary-green: #52b788;
@@ -20,6 +21,7 @@
 
 .page-content-wrapper {
     padding-top: 100px;
+    padding-bottom: 10px;
 }
 
 .sidebar-menu {
@@ -88,3 +90,12 @@
     border-radius: 6px;
     font-weight: 600;
 }
+
+
+.admin-section {
+    display: none;
+}
+
+    .admin-section.active {
+        display: block;
+    }
