@@ -111,30 +111,12 @@
         </section>
     </main>
 
+    <a class="whatsapp-float-button" href="https://wa.me/6598765432" target="_blank" title="Chat with AI Agent" aria-label="Chat with AI Agent">
+        <i class="bi bi-whatsapp"></i>
+    </a>
     <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
         <i class="bi bi-arrow-up"></i>
     </button>
-
-    <button class="open-chat-button" id="openChatBtn" onclick="toggleChat()" title="Open Chat" aria-label="Open Chat">
-        <i class="bi bi-chat-dots-fill"></i>
-    </button>
-
-    <div class="chat-popup" id="chat-box">
-        <div class="chat-header">
-            Live Support
-            <button class="close-chat-button" onclick="toggleChat()" aria-label="Close Chat">
-                <i class="bi bi-x-lg"></i>
-            </button>
-        </div>
-        <div class="chat-body">
-            <p>Welcome! How can we assist you with our produce or farm today?</p>
-        </div>
-        <div class="chat-footer">
-            <input type="text" placeholder="Type a message..." disabled>
-            <button class="btn btn-sm btn-success" disabled>Send</button>
-        </div>
-    </div>
-
     <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
@@ -186,10 +168,7 @@
                 }
             }
         }
-
-        // Helper function to display errors using Bootstrap classes
         function displayError(inputElement, message) {
-            // Find the corresponding error div
             const errorDiv = document.getElementById(inputElement.name + 'Error');
             if (errorDiv) {
                 errorDiv.textContent = message;
@@ -197,26 +176,20 @@
             }
         }
 
-        // Function to validate the form and display custom errors
         function validateContactForm() {
             let isValid = true;
             const form = document.getElementById("contactForm");
 
-            // Clear previous errors (Crucial for validation workflow)
             form.querySelectorAll('.form-control').forEach(input => {
                 input.classList.remove('is-invalid');
             });
 
-            // --- Validation Rules ---
-
-            // 1. Name Validation (Required)
             const nameInput = form.querySelector('input[name="name"]');
             if (nameInput.value.trim() === "") {
                 displayError(nameInput, "Please enter your full name. [Required]");
                 isValid = false;
             }
 
-            // 2. Email Validation (Required & Format)
             const emailInput = form.querySelector('input[name="email"]');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (emailInput.value.trim() === "") {
@@ -227,29 +200,23 @@
                 isValid = false;
             }
 
-            // 3. Phone Number Validation (Optional, but flexible format if entered)
             const phoneInput = form.querySelector('input[name="phone"]');
             const phoneValue = phoneInput.value.trim();
-            // Regex allows digits, spaces, hyphens, and a leading plus sign (for international codes)
             const phoneRegex = /^\+?[0-9\s-]{7,20}$/;
             if (phoneValue !== "" && !phoneRegex.test(phoneValue)) {
-                // Shows consideration for international format
                 displayError(phoneInput, "Please enter a valid phone number (e.g., +65 9876 5432).");
                 isValid = false;
             }
-
-            // 4. Message Validation (Required & Length)
             const messageInput = form.querySelector('textarea[name="message"]');
             if (messageInput.value.trim() === "") {
                 displayError(messageInput, "Please provide details of your inquiry. [Required]");
                 isValid = false;
-            } else if (messageInput.value.trim().length < 10) { // Example minimum length check
+            } else if (messageInput.value.trim().length < 10) { 
                 displayError(messageInput, "Message must be at least 10 characters long.");
                 isValid = false;
             }
 
-            // 5. reCAPTCHA Check
-            if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
+            if (isValid && typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
                 alert("Please complete the 'I'm not a robot' check before submitting.");
                 isValid = false;
             }
@@ -264,21 +231,15 @@
 
             if (contactForm) {
                 contactForm.addEventListener("submit", function (event) {
-                    event.preventDefault(); // Stop default submission
-
+                    event.preventDefault(); 
                     if (validateContactForm()) {
-                        // --- Validation successful! Proceed with 'Create' logic ---
-
-                        // Your existing logic for storing data (for thank you page)
                         sessionStorage.setItem('contactName', contactForm.querySelector('input[name="name"]').value);
                         sessionStorage.setItem('contactEmail', contactForm.querySelector('input[name="email"]').value);
                         sessionStorage.setItem('contactMessage', contactForm.querySelector('textarea[name="message"]').value);
                         sessionStorage.setItem('isFormSubmitted', 'true');
 
-                        // Simulate the backend database creation (C)
                         console.log("Form submitted successfully! Simulating Inquiry Record creation...");
 
-                        // Redirect to thank you page
                         window.location.href = 'thankyou.html';
                     }
                 });
@@ -300,16 +261,6 @@
                         behavior: 'smooth'
                     });
                 });
-            }
-
-            window.toggleChat = function () {
-                const chatBox = document.getElementById('chat-box');
-
-                if (chatBox.style.display === 'none' || chatBox.style.display === '') {
-                    chatBox.style.display = 'block';
-                } else {
-                    chatBox.style.display = 'none';
-                }
             }
         });
     </script>
