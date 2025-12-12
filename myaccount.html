@@ -3,217 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account | Leaf Plant</title>
+    <title>My Account | User Dashboard</title>
     <link rel="icon" type="image/png" href="image\Green Minimalist Leaf Plant Logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="myaccount.css">
     <style>
+        /* Essential styles for the layout and content switching (Moved to inline for completeness) */
         :root {
-            --meod-green: #2d5016;
             --primary-green: #2d6a4f;
-            --secondary-green: #52b788;
+            --light-green: #52b788;
         }
 
-        body {
-            padding-top: 80px;
+        .page-content-wrapper {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            min-height: calc(100vh - 100px);
         }
 
-        .account-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .account-header {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .user-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--meod-green), #3a6b1e);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        /* Essential Flexbox for equal height columns */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: stretch;
-        }
-
-        /* New: Make the content column a Flex container */
-        .col-lg-9 {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .account-sidebar {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            /* height: 100% is still necessary for the sidebar container itself */
-            height: 100%;
-        }
-
-            .account-sidebar .nav-link {
-                color: #333;
-                padding: 12px 15px;
-                margin: 5px 0;
-                border-radius: 8px;
-                transition: all 0.3s;
-            }
-
-                .account-sidebar .nav-link:hover,
-                .account-sidebar .nav-link.active {
-                    background-color: rgba(45, 80, 22, 0.1);
-                    color: var(--meod-green);
-                }
-
-                .account-sidebar .nav-link i {
-                    width: 20px;
-                    margin-right: 10px;
-                }
-
-        .account-content {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            /* FIX: Use flex-grow to dynamically expand to the tallest sibling */
-            flex-grow: 1;
-            /* Important: Also ensure it doesn't get smaller than the tallest content */
-            min-height: 500px; /* Reduced, but keep a sensible minimum */
-        }
-
-        .account-section {
+        .user-section {
             display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0.375rem;
         }
 
-            .account-section.active {
+            .user-section.active {
                 display: block;
             }
 
-        .section-title {
-            color: var(--meod-green);
-            border-bottom: 2px solid rgba(45, 80, 22, 0.1);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
+        .sidebar-menu .nav-link {
+            padding: 10px 15px;
+            border-radius: 0.25rem;
+            color: #333;
+            transition: all 0.2s;
         }
 
-        .form-control:focus {
-            border-color: var(--meod-green);
-            box-shadow: 0 0 0 0.2rem rgba(45, 80, 22, 0.1);
-        }
-
-        .btn-meod {
-            background-color: var(--meod-green);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-            .btn-meod:hover {
-                background-color: #3a6b1e;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
+            .sidebar-menu .nav-link.active,
+            .sidebar-menu .nav-link:hover {
+                background-color: var(--light-green);
+                color: #fff;
+                font-weight: 600;
             }
 
-        .order-card {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
+        .text-primary-green {
+            color: var(--primary-green) !important;
         }
 
-            .order-card:hover {
-                border-color: var(--meod-green);
-                background: rgba(45, 80, 22, 0.02);
-            }
-
-        .order-status {
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
+        /* Status badges for Orders */
         .status-delivered {
-            background: rgba(45, 80, 22, 0.1);
-            color: var(--meod-green);
+            color: #fff;
+            background-color: var(--primary-green);
+            padding: 4px 8px;
+            border-radius: 0.25rem;
+            font-size: 0.85em;
         }
 
         .status-pending {
-            background: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
+            color: #fff;
+            background-color: #ffc107;
+            padding: 4px 8px;
+            border-radius: 0.25rem;
+            font-size: 0.85em;
         }
 
-        /* --- STYLES FOR PAYMENT METHODS --- */
-        .payment-card {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s;
-        }
-
-            .payment-card:hover {
-                border-color: var(--meod-green);
-                background: rgba(45, 80, 22, 0.02);
-            }
-
-        .card-icon {
-            font-size: 2rem;
-            color: var(--meod-green);
-            margin-right: 15px;
-        }
-
-        .card-details h5 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .card-actions .btn {
-            margin-left: 10px;
-        }
-        /* ------------------------------------- */
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
-
-            .account-container {
-                padding: 10px;
-            }
-
-            .account-header {
-                padding: 20px;
-            }
-
-            .account-content {
-                padding: 20px;
-            }
+        .status-shipped {
+            color: #fff;
+            background-color: #0d6efd;
+            padding: 4px 8px;
+            border-radius: 0.25rem;
+            font-size: 0.85em;
         }
     </style>
 </head>
@@ -232,226 +94,311 @@
                     <li class="nav-item"><a class="nav-link" href="product.html">Our Produce</a></li>
                     <li class="nav-item"><a class="nav-link" href="article.html">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html" id="accountLink">Account</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="myaccount.html" id="accountLink">My Account</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="account-container">
-        <div class="account-header">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <div class="user-avatar">JD</div>
-                </div>
-                <div class="col">
-                    <h3 class="mb-1">Jane Doe</h3>
-                    <p class="text-muted mb-1">janedoe@gmail.com</p>
-                    <p class="text-muted mb-0">Member since: January 2024</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 mb-4">
-                <div class="account-sidebar">
-                    <nav class="nav flex-column">
-                        <a class="nav-link active" href="" onclick="return showSection(event, 'profile')">
-                            <i class="bi bi-person"></i> My Profile
-                        </a>
-                        <a class="nav-link" href="" onclick="return showSection(event, 'orders')">
-                            <i class="bi bi-basket"></i> My Orders
-                        </a>
-                        <a class="nav-link" href="" onclick="return showSection(event, 'payments')">
-                            <i class="bi bi-credit-card"></i> Payment Methods
-                        </a>
-                        <hr>
-                        <a class="nav-link text-danger" href="" onclick="logoutUser(event)">
-                            <i class="bi bi-box-arrow-right"></i> Logout
-                        </a>
+    <main class="page-content container-fluid page-content-wrapper">
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="sidebar-menu card shadow-sm">
+                    <nav class="nav flex-column p-2">
+                        <a class="nav-link active" href="#" onclick="return showUserSection(event, 'my-profile')"><i class="bi bi-person-circle me-2"></i> My Profile</a>
+                        <a class="nav-link" href="#" onclick="return showUserSection(event, 'my-orders')"><i class="bi bi-basket me-2"></i> My Orders</a>
+                        <a class="nav-link" href="#" onclick="return showUserSection(event, 'my-payment')"><i class="bi bi-credit-card me-2"></i> My Payment</a>
+                        <a class="nav-link" href="#" onclick="return showUserSection(event, 'settings')"><i class="bi bi-gear me-2"></i> Settings</a>
+                        <hr class="my-2">
+                        <a class="nav-link text-danger" href="#" onclick="logoutUser(event)"><i class="bi bi-box-arrow-left me-2"></i> Log Out</a>
                     </nav>
                 </div>
             </div>
 
             <div class="col-lg-9">
-                <div class="account-content">
+                <div class="card shadow-sm p-4">
 
-                    <div id="profile" class="account-section active">
-                        <h3 class="section-title">My Profile</h3>
-                        <form>
-                            <div class="row mb-3">
+                    <div id="my-profile" class="user-section active">
+                        <h1 class="display-6 text-primary-green fw-bold mb-4">👋 Welcome, Jane Doe!</h1>
+                        <h4 class="mb-3">Personal Information</h4>
+
+                        <form id="profileForm" class="needs-validation" novalidate onsubmit="return validateProfileForm(event)">
+                            <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" value="Jane">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" value="Jane" required minlength="2">
+                                    <div class="invalid-feedback">
+                                        Please enter your first name (minimum 2 characters).
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" value="Doe">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" value="Doe" required minlength="2">
+                                    <div class="invalid-feedback">
+                                        Please enter your last name (minimum 2 characters).
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" value="jane.doe@example.com" readonly>
+                                    <div class="form-text">Email cannot be changed here. Contact support to update it.</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Default Shipping Address</label>
+                                    <textarea class="form-control" id="address" required minlength="10">Blk 123, Jurong East St 12, #04-56</textarea>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid shipping address (minimum 10 characters).
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i> Save Changes</button>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" value="jane.doe@gmail.com">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" value="+65 9123 4567">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control" value="1990-05-15">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Address</label>
-                                <input type="text" class="form-control" value="123 Main Street, Singapore 123456">
-                            </div>
-                            <button type="submit" class="btn btn-meod">Update Profile</button>
                         </form>
                     </div>
 
-                    <div id="orders" class="account-section">
-                        <h3 class="section-title">My Orders</h3>
-                        <div class="order-card">
-                            <div class="row align-items-center">
-                                <div class="col-md-2">
-                                    <img src="image/red_pak_choy.jpg" alt="Red Pak Choy" class="img-fluid rounded" style="height: 80px; object-fit: cover;">
-                                </div>
-                                <div class="col-md-4">
-                                    <h5>Red Pak Choy</h5>
-                                    <p class="text-muted mb-0">Order #MEOD-2024-0012</p>
-                                    <small class="text-muted">15 Mar 2024</small>
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="mb-0">$4.20</p>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="order-status status-delivered">Delivered</span>
-                                </div>
-                                <div class="col-md-2 text-end">
-                                    <button class="btn btn-outline-secondary btn-sm">View Details</button>
-                                </div>
-                            </div>
+                    <div id="my-orders" class="user-section">
+                        <h1 class="display-6 text-primary-green fw-bold mb-4">My Orders History</h1>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#202512-401</td>
+                                        <td>Dec 12, 2025</td>
+                                        <td>$58.00</td>
+                                        <td><span class="status-delivered">Delivered</span></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#202512-402</td>
+                                        <td>Dec 10, 2025</td>
+                                        <td>$70.40</td>
+                                        <td><span class="status-shipped">Shipped</span></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#202512-403</td>
+                                        <td>Dec 05, 2025</td>
+                                        <td>$87.00</td>
+                                        <td><span class="status-pending">Processing</span></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary">Details</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div id="payments" class="account-section">
-                        <h3 class="section-title">Payment Methods</h3>
+                    <div id="my-payment" class="user-section">
+                        <h1 class="display-6 text-primary-green fw-bold mb-4">Payment Methods</h1>
 
-                        <button class="btn btn-meod mb-4">
-                            <i class="bi bi-plus-circle me-2"></i> Add New Card
-                        </button>
-
-                        <h4 class="mb-3">Saved Cards</h4>
-
-                        <div class="payment-card">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-credit-card card-icon"></i>
-                                <div class="card-details">
-                                    <h5>Visa ending in 4242</h5>
-                                    <p class="text-muted mb-0">Expires 10/2026</p>
-                                </div>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </div>
+                        <div class="alert alert-info">
+                            **Securely Managed:** All payment details are tokenized and managed by our secure payment gateway.
                         </div>
 
-                        <div class="payment-card">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-credit-card-2-front card-icon"></i>
-                                <div class="card-details">
-                                    <h5>Mastercard ending in 1987</h5>
-                                    <p class="text-muted mb-0">Expires 05/2027</p>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-credit-card-2-front me-2"></i> VISA ending in 4242 (Default)
                                 </div>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </div>
-                        </div>
+                                <button class="btn btn-sm btn-outline-danger">Remove</button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-credit-card me-2"></i> Mastercard ending in 1001
+                                </div>
+                                <button class="btn btn-sm btn-outline-danger">Remove</button>
+                            </li>
+                        </ul>
 
-                        <p class="text-muted mt-4">Your payment information is securely stored and encrypted.</p>
+                        <button class="btn btn-outline-primary"><i class="bi bi-plus-circle me-2"></i> Add New Payment Method</button>
                     </div>
+
+                    <div id="settings" class="user-section">
+                        <h1 class="display-6 text-primary-green fw-bold mb-4">Account Settings</h1>
+
+                        <h5 class="mt-4 mb-3">Password Management</h5>
+                        <form id="passwordForm" class="needs-validation" novalidate onsubmit="return validatePasswordForm(event)">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" required minlength="8">
+                                <div class="invalid-feedback">
+                                    Please enter your current password.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" required minlength="8">
+                                <div class="invalid-feedback" id="newPasswordFeedback">
+                                    New password must be at least 8 characters long.
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required minlength="8">
+                                <div class="invalid-feedback" id="confirmPasswordFeedback">
+                                    Please confirm your new password.
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-warning"><i class="bi bi-lock me-2"></i> Change Password</button>
+                        </form>
+
+                        <h5 class="mt-5 mb-3">Notification Preferences</h5>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                            <label class="form-check-label" for="emailNotifications">Receive email updates on orders and promotions</label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="aiNotifications">
+                            <label class="form-check-label" for="aiNotifications">Receive AI proactive product alerts via WhatsApp</label>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
     <footer class="custom-footer">
         <div class="footer-top">
             <div class="footer-logo">
                 <img src="image/Green Minimalist Leaf Plant Logo_Name.png" alt="AI Logo">
             </div>
-
             <div class="footer-info">
                 <h5>Address</h5>
                 <p>123 Main Street<br>Singapore 123456</p>
             </div>
-
             <div class="footer-info">
                 <h5>Email</h5>
                 <p>info@AI.com.sg</p>
             </div>
-
             <div class="footer-socials">
                 <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
-
         <hr>
-
         <p class="footer-copy">Copyright &copy; 2025 WEB DEVELOPMENT PROJECT TEAM AI.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
-        function updateAccountLink() {
-            const accountLink = document.getElementById("accountLink");
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const userRole = localStorage.getItem('userRole');
+        // === Profile Form Validation Function ===
+        window.validateProfileForm = function (event) {
+            const form = document.getElementById('profileForm');
+            event.preventDefault();
+            event.stopPropagation();
 
-            if (accountLink) {
-                if (isLoggedIn) {
-                    if (userRole === 'admin') {
-                        accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html';
-                        accountLink.classList.remove('active');
-                    } else {
-                        accountLink.textContent = 'User';
-                        accountLink.href = 'myaccount.html';
-                    }
-                } else {
-                    accountLink.textContent = 'Account';
-                    accountLink.href = 'account.html';
-                }
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return false;
             }
+
+            // --- Client-side Validation Passed ---
+
+            // In a real app: Collect data and send via AJAX/Fetch API
+            // For demo: Show Success Message
+            alert('✅ Profile updated successfully! (Data sent to server: ' + JSON.stringify({
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                address: document.getElementById('address').value
+            }, null, 2) + ')');
+
+            form.classList.remove('was-validated');
+            return false;
         }
 
-        function logoutUser(event) {
+        // === Password Form Validation Function ===
+        window.validatePasswordForm = function (event) {
+            const form = document.getElementById('passwordForm');
             event.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userRole');
-            window.location.href = 'index.html';
+            event.stopPropagation();
+
+            const currentPass = document.getElementById('currentPassword');
+            const newPass = document.getElementById('newPassword');
+            const confirmPass = document.getElementById('confirmPassword');
+            let isValid = true;
+
+            // 1. Check native constraints (required, minlength=8)
+            if (!form.checkValidity()) {
+                isValid = false;
+            }
+
+            // 2. Custom check: New Password vs. Confirm Password match
+            if (newPass.value !== confirmPass.value) {
+                confirmPass.setCustomValidity('Passwords do not match.'); // Set custom validation error
+                isValid = false;
+            } else {
+                confirmPass.setCustomValidity(''); // Reset custom validation error
+            }
+
+            // 3. Custom check: New Password is not the same as Current Password
+            if (newPass.value === currentPass.value && newPass.value.length >= 8) {
+                newPass.setCustomValidity('New password cannot be the same as your current password.');
+                document.getElementById('newPasswordFeedback').textContent = 'New password cannot be the same as your current password.';
+                isValid = false;
+            } else if (newPass.value.length >= 8) {
+                newPass.setCustomValidity('');
+                document.getElementById('newPasswordFeedback').textContent = 'New password must be at least 8 characters long.';
+            }
+
+            // Apply Bootstrap validation styles
+            form.classList.add('was-validated');
+
+            if (isValid) {
+                // --- Validation Passed ---
+                alert('✅ Password changed successfully! (Current and New password fields valid)');
+
+                // Clear the forms on success
+                form.reset();
+                form.classList.remove('was-validated');
+            }
+
+            return false;
         }
 
-        function showSection(event, sectionId) {
+
+        // === Core Navigation and Utility Functions ===
+
+        window.showUserSection = function (event, sectionId) {
             event.preventDefault();
 
-            document.querySelectorAll('.account-section').forEach(section => {
+            // Hide all content sections
+            document.querySelectorAll('.user-section').forEach(section => {
                 section.classList.remove('active');
             });
-
-            document.querySelectorAll('.account-sidebar .nav-link').forEach(link => {
+            // Deactivate all sidebar links
+            document.querySelectorAll('.sidebar-menu .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
 
+            // Show the target section and activate the corresponding link
             document.getElementById(sectionId).classList.add('active');
             event.currentTarget.classList.add('active');
+
+            // Handle validation reset when switching sections
+            document.querySelectorAll('.needs-validation').forEach(form => {
+                form.classList.remove('was-validated');
+            });
+
+
+            // Optional: Update URL hash for sharing/bookmarking
             if (window.history.pushState) {
-                window.history.pushState(null, null, '#' + sectionId);
+                window.history.pushState(null, null, 'myaccount.html#' + sectionId);
             } else {
                 window.location.hash = sectionId;
             }
@@ -459,31 +406,67 @@
             return false;
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
+        function logoutUser(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            alert('You have been logged out successfully.');
+            window.location.href = 'index.html';
+        }
+
+        // Initialization Logic on Load
+        window.addEventListener('DOMContentLoaded', function () {
+            // Check for login status and redirect if not logged in (basic client-side check)
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                alert('Please log in to view your account details.');
+                window.location.href = 'account.html';
+                return;
+            }
+
+            // Handle URL Hash for initial section display
             const hash = window.location.hash.substring(1);
-            let targetSectionId = 'profile';
+            let targetSectionId = 'my-profile';
 
             if (hash && document.getElementById(hash)) {
                 targetSectionId = hash;
             }
 
-            document.querySelectorAll('.account-section').forEach(section => {
+            // Activate the correct section and sidebar link on page load
+            document.querySelectorAll('.user-section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.querySelectorAll('.account-sidebar .nav-link').forEach(link => {
+            document.querySelectorAll('.sidebar-menu .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
 
             const targetSection = document.getElementById(targetSectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                const targetLink = document.querySelector(`.account-sidebar .nav-link[onclick*="'${targetSectionId}'"]`);
+                const targetLink = document.querySelector(`.sidebar-menu .nav-link[onclick*="'${targetSectionId}'"]`);
                 if (targetLink) {
                     targetLink.classList.add('active');
                 }
             }
 
-            updateAccountLink();
+            // Scroll to Top Button logic
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', function () {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollTopBtn.style.display = "block";
+                    } else {
+                        scrollTopBtn.style.display = "none";
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
 </body>

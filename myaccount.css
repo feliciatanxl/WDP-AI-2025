@@ -1,0 +1,104 @@
+﻿.text-primary-green {
+    color: #2d6a4f !important;
+}
+
+.btn-admin-logout {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-admin-logout:hover {
+        background-color: #c82333;
+        color: white;
+    }
+
+:root {
+    --primary-green: #b0b0b0; /* Light Grey */
+    --light-green: #b0b0b0; /* Light Grey */
+}
+
+.page-content-wrapper {
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+.sidebar-menu {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 120px);
+    padding: 20px 0;
+}
+
+    .sidebar-menu .nav-link {
+        padding: 10px 15px;
+        border-radius: 0.25rem;
+        color: #333; /* Default dark text color */
+        transition: all 0.2s;
+    }
+
+        .sidebar-menu .nav-link.active,
+        .sidebar-menu .nav-link:hover {
+            background-color: var(--light-green); /* Light Grey background */
+            color: #333; /* Dark text color for readability against light grey background */
+            font-weight: 600;
+        }
+
+.stat-card .card-body {
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary-green);
+    background: rgba(45, 106, 79, 0.1); /* Note: This rgba color is green, not grey, and should be checked. */
+    padding: 15px;
+    border-radius: 12px;
+    margin-right: 15px;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.sales-chart-wrapper, .recent-orders-wrapper {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.status-delivered {
+    color: #fff;
+    background-color: var(--primary-green); /* Uses the light grey variable for background */
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+}
+
+.status-pending {
+    color: #fff;
+    background-color: #ffc107;
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+}
+
+.status-shipped {
+    color: #fff;
+    background-color: #0d6efd;
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+}
+
+.admin-section {
+    display: none;
+}
+
+    .admin-section.active {
+        display: block;
+    }

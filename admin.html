@@ -178,7 +178,139 @@
                             </table>
                         </div>
                     </div>
-                </div> <div id="customer-service-management" class="admin-section">
+                </div> <div id="products-management" class="admin-section">
+                    <h1 class="display-5 text-primary-green fw-bold mb-4">Products & Inventory Management (CRUD)</h1>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal"><i class="bi bi-plus-circle me-2"></i> Add New Product</button>
+                        <button class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                    </div>
+
+                    <div class="table-responsive card shadow-sm">
+                        <table class="table align-middle table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;">ID</th>
+                                    <th style="width: 25%;">Product Name</th>
+                                    <th style="width: 15%;">Stock Level</th>
+                                    <th style="width: 15%;">Price (S$)</th>
+                                    <th style="width: 25%;">AI Status</th>
+                                    <th style="width: 15%;">Actions (U/D)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#101</td>
+                                    <td>Red Pak Choy (500g)</td>
+                                    <td><input type="number" value="120" class="form-control form-control-sm w-75"></td>
+                                    <td>4.50</td>
+                                    <td><span class="status-delivered">Proactive Alerts ON</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" title="Update Stock"><i class="bi bi-save"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Delete Product"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#102</td>
+                                    <td>Organic Mizuna (500g)</td>
+                                    <td><input type="number" value="0" class="form-control form-control-sm w-75 is-invalid"></td>
+                                    <td>5.20</td>
+                                    <td><span class="status-pending">OUT OF STOCK</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" title="Update Stock"><i class="bi bi-save"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Delete Product"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted small mt-3">The Stock Level column allows direct inventory modification (Update). **Out of stock items trigger AI alerts when stock is replenished.**</p>
+                </div>
+                <div id="orders-management" class="admin-section">
+                    <h1 class="display-5 text-primary-green fw-bold mb-4">Order Fulfillment & ERP Integration</h1>
+
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading"><i class="bi bi-check-circle me-2"></i> Automated Order Flow Active</h4>
+                        <p class="mb-0">Confirmed orders received via the AI Agent are automatically staged here and ready for ERP export.</p>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">Pending Fulfillment (AI Confirmed)</h5>
+                    <div class="table-responsive card shadow-sm">
+                        <table class="table align-middle table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Order No.</th>
+                                    <th>Customer Type</th>
+                                    <th>Total Items</th>
+                                    <th>Value (S$)</th>
+                                    <th>AI Confirmation Time</th>
+                                    <th>ERP Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#AI-1055</td>
+                                    <td>Group Buy Leader (Tampines)</td>
+                                    <td>14</td>
+                                    <td>125.00</td>
+                                    <td>10:45 AM</td>
+                                    <td><button class="btn btn-sm btn-info text-white me-2">Generate Invoice</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#AI-1054</td>
+                                    <td>Individual Customer</td>
+                                    <td>3</td>
+                                    <td>18.90</td>
+                                    <td>Yesterday, 4:00 PM</td>
+                                    <td><button class="btn btn-sm btn-success disabled">Sent to ERP</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="customers-management" class="admin-section">
+                    <h1 class="display-5 text-primary-green fw-bold mb-4">Customer Accounts (CRUD)</h1>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <button class="btn btn-primary"><i class="bi bi-person-plus me-2"></i> Add New Customer</button>
+                        <button class="btn btn-outline-secondary"><i class="bi bi-funnel"></i> Filter</button>
+                    </div>
+
+                    <div class="table-responsive card shadow-sm">
+                        <table class="table align-middle table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>AI Contact Status</th>
+                                    <th>Last Order</th>
+                                    <th>Actions (U/D)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>jane.d@email.com</td>
+                                    <td>Individual</td>
+                                    <td>Active</td>
+                                    <td>2 days ago</td>
+                                    <td><button class="btn btn-sm btn-outline-secondary">Edit</button> <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sally Evian</td>
+                                    <td>sally@gb-leader.net</td>
+                                    <td>**Group Buy Leader**</td>
+                                    <td>Proactive</td>
+                                    <td>Today</td>
+                                    <td><button class="btn btn-sm btn-outline-secondary">Edit</button> <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted small mt-3">All user profiles must support **CRUD** operations.</p>
+                </div>
+                <div id="customer-service-management" class="admin-section">
                     <h1 class="display-5 text-primary-green fw-bold mb-4">Inbound Inquiry Management</h1>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -238,27 +370,48 @@
                             </tbody>
                         </table>
                     </div>
-                </div> <div id="products-management" class="admin-section">
-                    <h1 class="display-5 text-primary-green fw-bold">Products Management</h1>
-                    <p class="text-muted">This section handles adding, viewing, updating inventory, and removing products.</p>
-                </div>
-                <div id="orders-management" class="admin-section">
-                    <h1 class="display-5 text-primary-green fw-bold">Orders Management</h1>
-                    <p class="text-muted">This section links to ERP input for invoicing and fulfillment.</p>
-                </div>
-                <div id="customers-management" class="admin-section">
-                    <h1 class="display-5 text-primary-green fw-bold">Customer Accounts</h1>
-                    <p class="text-muted">Manage user profiles and group buy leaders.</p>
                 </div>
                 <div id="analytics-reporting" class="admin-section">
-                    <h1 class="display-5 text-primary-green fw-bold">Analytics & Reporting</h1>
-                    <p class="text-muted">Focus on AI outreach performance metrics.</p>
+                    <h1 class="display-5 text-primary-green fw-bold mb-4">AI Sales & Performance Analytics</h1>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="sales-chart-wrapper h-100">
+                                <h5 class="fw-bold mb-3">AI Outreach Success Rate</h5>
+                                <p class="text-muted small">Conversion from Proactive Stock Alert to Order Confirmation.</p>
+                                <div class="chart-container" style="position: relative; height:200px;">
+                                    <canvas id="aiConversionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="sales-chart-wrapper h-100">
+                                <h5 class="fw-bold mb-3">Communication Log Analysis</h5>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item d-flex justify-content-between">Total AI Messages Sent: <span class="fw-bold">1,250</span></li>
+                                    <li class="list-group-item d-flex justify-content-between">WhatsApp Responses Received: <span class="fw-bold text-success">85%</span></li>
+                                    <li class="list-group-item d-flex justify-content-between">Conversion Rate to Sale: <span class="fw-bold text-primary-green">12%</span></li>
+                                </ul>
+                                <button class="btn btn-sm btn-outline-secondary mt-3">View Full Comms Log (CRUD R)</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="settings" class="admin-section">
-                    <h1 class="display-5 text-primary-green fw-bold">Settings</h1>
-                    <p class="text-muted">Manage system configuration.</p>
+                    <h1 class="display-5 text-primary-green fw-bold mb-4">System Settings</h1>
+                    <div class="card shadow-sm p-4">
+                        <h5 class="mb-3">AI Agent Configuration</h5>
+                        <div class="mb-3">
+                            <label class="form-label">WhatsApp API Status</label>
+                            <input type="text" class="form-control" value="ACTIVE & CONNECTED" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Proactive Alert Threshold</label>
+                            <input type="number" class="form-control" value="50">
+                        </div>
+                        <button class="btn btn-primary">Save Configuration (Update)</button>
+                    </div>
                 </div>
-
             </div>
         </div>
     </main>
@@ -291,17 +444,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // CHART.JS SCRIPT FOR WEBSITE TRAFFIC (Kept for Dashboard Overview section)
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the chart element exists in the current active section
-            const ctx = document.getElementById('websiteTrafficChart');
-            if (ctx) {
+        function logoutAdmin(event) {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            alert('Admin logged out successfully.');
+            window.location.href = 'index.html';
+        }
+
+        function initializeCharts() {
+            const overviewCtx = document.getElementById('websiteTrafficChart');
+            if (overviewCtx) {
                 const labels = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 const trafficData = [25000, 27500, 31000, 30500, 34000, 42000];
-                // Assuming --primary-green is defined in global.css or linked CSS
                 const primaryGreen = getComputedStyle(document.documentElement).getPropertyValue('--primary-green') || '#2d6a4f';
 
-                new Chart(ctx, {
+                new Chart(overviewCtx, {
                     type: 'line',
                     data: {
                         labels: labels,
@@ -328,55 +486,64 @@
                                         return ` Visitors: ${context.parsed.y.toLocaleString()}`;
                                     }
                                 }
-                            }
+                            },
                         },
                         scales: {
-                            y: {
-                                beginAtZero: false,
-                                grid: { display: true },
-                                ticks: {
-                                    callback: function (value, index, ticks) {
-                                        return value.toLocaleString();
-                                    }
-                                }
-                            },
+                            y: { beginAtZero: false, grid: { display: true }, ticks: { callback: function (value, index, ticks) { return value.toLocaleString(); } } },
                             x: { grid: { display: false } }
                         }
                     }
                 });
             }
-        });
 
-        // DYNAMIC NAVIGATION AND ADMIN GUARD LOGIC
-        function logoutAdmin(event) {
-            event.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userRole');
-            alert('Admin logged out successfully.');
-            window.location.href = 'index.html';
+            const aiCtx = document.getElementById('aiConversionChart');
+            if (aiCtx) {
+                const aiLabels = ['Alert Sent', 'Response', 'Order'];
+                const aiData = [100, 85, 12]; 
+
+                new Chart(aiCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: aiLabels,
+                        datasets: [{
+                            label: 'Conversion Rate %',
+                            data: aiData,
+                            backgroundColor: ['rgba(45, 106, 79, 0.6)', 'rgba(82, 183, 136, 0.6)', 'rgba(255, 165, 0, 0.6)'],
+                            borderColor: ['#2d6a4f', '#52b788', 'orange'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, max: 100 },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
         }
 
-        // NEW FUNCTION: Handles section switching, mirroring myaccount.html
-        function showAdminSection(event, sectionId) {
+        window.showAdminSection = function (event, sectionId) {
             event.preventDefault();
 
-            // 1. Hide all content sections
             document.querySelectorAll('.admin-section').forEach(section => {
                 section.classList.remove('active');
             });
 
-            // 2. Deactivate all sidebar links
             document.querySelectorAll('.sidebar-menu .nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-
-            // 3. Activate the targeted section
             document.getElementById(sectionId).classList.add('active');
 
-            // 4. Activate the clicked link
             event.currentTarget.classList.add('active');
 
-            // Optionally update URL hash for navigation consistency
+            if (sectionId === 'analytics-reporting' || sectionId === 'dashboard-overview') {
+                setTimeout(initializeCharts, 100);
+            }
+
             if (window.history.pushState) {
                 window.history.pushState(null, null, 'admin.html#' + sectionId);
             } else {
@@ -413,18 +580,14 @@
         window.addEventListener('DOMContentLoaded', function () {
             updateAccountLink();
 
-            // ADMIN GUARD LOGIC
             const userRole = localStorage.getItem('userRole');
             if (userRole !== 'admin') {
-                // If not admin, attempt to redirect
                 if (window.location.pathname.endsWith('admin.html')) {
                     alert('Access Denied. You must be an administrator to view this page.');
                     window.location.href = 'account.html';
                     return;
                 }
             }
-
-            // HASH NAVIGATION LOGIC
             const hash = window.location.hash.substring(1);
             let targetSectionId = 'dashboard-overview';
 
@@ -432,7 +595,6 @@
                 targetSectionId = hash;
             }
 
-            // Manually set initial active state based on URL hash or default
             document.querySelectorAll('.admin-section').forEach(section => {
                 section.classList.remove('active');
             });
@@ -449,6 +611,9 @@
                 }
             }
 
+            if (targetSectionId === 'dashboard-overview' || targetSectionId === 'analytics-reporting') {
+                initializeCharts();
+            }
 
             const scrollTopBtn = document.getElementById("scrollTopBtn");
             if (scrollTopBtn) {
