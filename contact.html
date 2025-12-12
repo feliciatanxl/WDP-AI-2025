@@ -44,22 +44,26 @@
 
                     <div class="col-lg-6 d-flex align-items-stretch">
 
-                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column">
+                        <form id="contactForm" class="p-4 border rounded shadow-sm bg-white w-100 d-flex flex-column" novalidate>
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control" required>
+                                <div class="invalid-feedback" id="nameError"></div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control" required>
+                                <div class="invalid-feedback" id="emailError"></div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Phone Number (Optional)</label>
                                 <input type="tel" name="phone" class="form-control">
+                                <div class="invalid-feedback" id="phoneError"></div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Message</label>
                                 <textarea name="message" class="form-control" rows="4" required></textarea>
+                                <div class="invalid-feedback" id="messageError"></div>
                             </div>
 
                             <div class="mb-3 recaptcha-wrapper">
@@ -183,6 +187,76 @@
             }
         }
 
+        // Helper function to display errors using Bootstrap classes
+        function displayError(inputElement, message) {
+            // Find the corresponding error div
+            const errorDiv = document.getElementById(inputElement.name + 'Error');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                inputElement.classList.add('is-invalid');
+            }
+        }
+
+        // Function to validate the form and display custom errors
+        function validateContactForm() {
+            let isValid = true;
+            const form = document.getElementById("contactForm");
+
+            // Clear previous errors (Crucial for validation workflow)
+            form.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('is-invalid');
+            });
+
+            // --- Validation Rules ---
+
+            // 1. Name Validation (Required)
+            const nameInput = form.querySelector('input[name="name"]');
+            if (nameInput.value.trim() === "") {
+                displayError(nameInput, "Please enter your full name. [Required]");
+                isValid = false;
+            }
+
+            // 2. Email Validation (Required & Format)
+            const emailInput = form.querySelector('input[name="email"]');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() === "") {
+                displayError(emailInput, "A valid email address is required to receive our response. [Required]");
+                isValid = false;
+            } else if (!emailRegex.test(emailInput.value)) {
+                displayError(emailInput, "Please enter a valid email address format.");
+                isValid = false;
+            }
+
+            // 3. Phone Number Validation (Optional, but flexible format if entered)
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const phoneValue = phoneInput.value.trim();
+            // Regex allows digits, spaces, hyphens, and a leading plus sign (for international codes)
+            const phoneRegex = /^\+?[0-9\s-]{7,20}$/;
+            if (phoneValue !== "" && !phoneRegex.test(phoneValue)) {
+                // Shows consideration for international format
+                displayError(phoneInput, "Please enter a valid phone number (e.g., +65 9876 5432).");
+                isValid = false;
+            }
+
+            // 4. Message Validation (Required & Length)
+            const messageInput = form.querySelector('textarea[name="message"]');
+            if (messageInput.value.trim() === "") {
+                displayError(messageInput, "Please provide details of your inquiry. [Required]");
+                isValid = false;
+            } else if (messageInput.value.trim().length < 10) { // Example minimum length check
+                displayError(messageInput, "Message must be at least 10 characters long.");
+                isValid = false;
+            }
+
+            // 5. reCAPTCHA Check
+            if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
+                alert("Please complete the 'I'm not a robot' check before submitting.");
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             updateAccountLink();
 
@@ -190,27 +264,26 @@
 
             if (contactForm) {
                 contactForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Stop default submission
 
-                    if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === "") {
-                        event.preventDefault();
-                        alert("Please complete the 'I'm not a robot' check.");
-                        return;
+                    if (validateContactForm()) {
+                        // --- Validation successful! Proceed with 'Create' logic ---
+
+                        // Your existing logic for storing data (for thank you page)
+                        sessionStorage.setItem('contactName', contactForm.querySelector('input[name="name"]').value);
+                        sessionStorage.setItem('contactEmail', contactForm.querySelector('input[name="email"]').value);
+                        sessionStorage.setItem('contactMessage', contactForm.querySelector('textarea[name="message"]').value);
+                        sessionStorage.setItem('isFormSubmitted', 'true');
+
+                        // Simulate the backend database creation (C)
+                        console.log("Form submitted successfully! Simulating Inquiry Record creation...");
+
+                        // Redirect to thank you page
+                        window.location.href = 'thankyou.html';
                     }
-
-                    event.preventDefault();
-
-                    const nameInput = contactForm.querySelector('input[name="name"]').value;
-                    const emailInput = contactForm.querySelector('input[name="email"]').value;
-                    const messageInput = contactForm.querySelector('textarea[name="message"]').value;
-
-                    sessionStorage.setItem('contactName', nameInput);
-                    sessionStorage.setItem('contactEmail', emailInput);
-                    sessionStorage.setItem('contactMessage', messageInput);
-                    sessionStorage.setItem('isFormSubmitted', 'true'); 
-
-                    window.location.href = 'thankyou.html';
                 });
             }
+
             const scrollTopBtn = document.getElementById("scrollTopBtn");
             if (scrollTopBtn) {
                 window.addEventListener('scroll', function () {
