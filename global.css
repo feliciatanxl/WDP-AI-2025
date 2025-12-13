@@ -166,6 +166,7 @@ header {
     }*/
 
 #scrollTopBtn {
+    display:none;
     position: fixed;
     bottom: 80px;
     right: 20px;
