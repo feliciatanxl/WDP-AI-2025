@@ -278,7 +278,6 @@
         document.getElementById('signupForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Simple password match validation (added for user experience)
             const password = document.getElementById('signupPassword').value;
             const repeatPassword = document.getElementById('repeatPassword').value;
 
@@ -294,19 +293,31 @@
 
         document.addEventListener('DOMContentLoaded', loadSavedCredentials);
 
-        // Functionality to toggle password visibility (based on the eye icon in the screenshot)
         document.querySelectorAll('.toggle-password').forEach(toggle => {
             toggle.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
                 const passwordInput = document.getElementById(targetId);
 
-                // Toggle the type attribute
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 passwordInput.setAttribute('type', type);
 
-                // Toggle the icon
                 this.classList.toggle('bi-eye');
                 this.classList.toggle('bi-eye-slash');
+            });
+
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            window.onscroll = function () {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
