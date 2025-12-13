@@ -425,16 +425,11 @@
 
                 items.forEach(item => {
                     const name = item.querySelector("h5").innerText.toLowerCase();
-                    if (name.includes(text)) {
-                        item.parentElement.style.display = "block";
-                        item.style.display = "block";
-                    } else {
-                        item.style.display = "none";
-                    }
+                    item.style.display = name.includes(text) ? "" : "none";
                 });
             });
-
-        });
+                });
+          
     </script>
 
 </body>
