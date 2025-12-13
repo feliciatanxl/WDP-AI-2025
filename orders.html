@@ -33,12 +33,12 @@
     <main class="page-content container-xl mb-5" style="margin-top: 120px;">
         <div class="row justify-content-center fade-in mb-4">
             <div class="col-lg-8">
-                 <a href="product.html" class="back-link text-decoration-none fw-bold mb-3 d-inline-block">
+                <a href="product.html" class="back-link text-decoration-none fw-bold mb-3 d-inline-block">
                     <i class="bi bi-arrow-left-circle me-2 text-success"></i> Continue Shopping
                 </a>
                 <div class="d-flex justify-content-between align-items-center">
-                     <h1 class="display-5 fw-bold text-dark mb-0">Your Bag</h1>
-                     <span id="header-count" class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">0 items</span>
+                    <h1 class="display-5 fw-bold text-dark mb-0">Your Bag</h1>
+                    <span id="header-count" class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">0 items</span>
                 </div>
             </div>
         </div>
@@ -46,20 +46,20 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 cart-wrapper">
                 <div id="cart-container">
-                    </div>
-                
+                </div>
+
                 <div id="cart-actions" style="display:none;" class="mt-4 fade-in">
                     <div class="d-flex justify-content-between align-items-center bg-light p-4 rounded-4 mb-4">
                         <div>
-                             <h5 class="mb-0 fw-bold text-muted">Estimated Total</h5>
-                             <small>Shipping & Taxes calculated at payment</small>
+                            <h5 class="mb-0 fw-bold text-muted">Estimated Total</h5>
+                            <small>Shipping & Taxes calculated at payment</small>
                         </div>
                         <h2 class="mb-0 fw-bold text-success" id="estimated-total">$0.00</h2>
                     </div>
 
-                     <div class="row g-3">
+                    <div class="row g-3">
                         <div class="col-md-6 order-md-2">
-                             <a href="payment.html" class="btn btn-success w-100 py-3 fw-bold shadow-sm rounded-pill" style="font-size: 1.1rem;">
+                            <a href="payment.html" class="btn btn-success w-100 py-3 fw-bold shadow-sm rounded-pill" style="font-size: 1.1rem;">
                                 Proceed to Payment <i class="bi bi-arrow-right-short"></i>
                             </a>
                         </div>
@@ -73,6 +73,12 @@
             </div>
         </div>
     </main>
+    <a class="whatsapp-float-button" href="https://wa.me/6598765432" target="_blank" title="Chat with AI Agent" aria-label="Chat with AI Agent">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
     <footer class="custom-footer">
         <div class="footer-top">
@@ -85,7 +91,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Master Data for stock checking
@@ -95,7 +101,7 @@
                 5: { name: "Red Pak Choy", stock: 8 }, 6: { name: "Xiao Bai Cai", stock: 25 },
                 7: { name: "Jiu Bai Cai", stock: 18 }, 8: { name: "Mao Bai", stock: 14 }
             };
-            
+
             const cartContainer = document.getElementById('cart-container');
             const headerCount = document.getElementById('header-count');
             const cartActions = document.getElementById('cart-actions');
@@ -110,12 +116,12 @@
 
                 if (cart.length === 0) {
                     cartContainer.innerHTML = `
-                        <div class="text-center py-5 fade-in bg-white rounded-4 shadow-sm">
-                            <div class="mb-3"><i class="bi bi-basket3 text-success opacity-25" style="font-size: 5rem;"></i></div>
-                            <h3 class="fw-bold text-dark">Your bag is empty</h3>
-                            <p class="text-muted mb-4">Fresh produce is waiting for you.</p>
-                            <a href="product.html" class="btn btn-outline-success rounded-pill px-4">Start Shopping</a>
-                        </div>`;
+                                <div class="text-center py-5 fade-in bg-white rounded-4 shadow-sm">
+                                    <div class="mb-3"><i class="bi bi-basket3 text-success opacity-25" style="font-size: 5rem;"></i></div>
+                                    <h3 class="fw-bold text-dark">Your bag is empty</h3>
+                                    <p class="text-muted mb-4">Fresh produce is waiting for you.</p>
+                                    <a href="product.html" class="btn btn-outline-success rounded-pill px-4">Start Shopping</a>
+                                </div>`;
                     headerCount.textContent = "0 items";
                     cartActions.style.display = 'none';
                     return;
@@ -135,26 +141,26 @@
                     const imgSrc = imgMap[item.id] || 'image/mizuna.png';
 
                     const html = `
-                        <div class="cart-card d-flex align-items-center bg-white p-3 mb-3 rounded-3 shadow-sm border">
-                            <div class="cart-img-wrapper me-3"><img src="${imgSrc}" alt="${item.name}"></div>
-                            <div class="flex-grow-1">
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="mb-0 fw-bold">${item.name}</h5>
-                                    <span class="fw-bold">$${itemTotal.toFixed(2)}</span>
-                                </div>
-                                <small class="text-muted">$${priceNum.toFixed(2)} / unit</small>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div class="qty-control d-flex align-items-center bg-light rounded-pill px-1">
-                                        <button class="btn btn-sm rounded-circle" onclick="updateQty(${index}, -1)"><i class="bi bi-dash"></i></button>
-                                        <input type="text" class="form-control-plaintext text-center fw-bold" style="width: 40px;" value="${item.qty}" readonly>
-                                        <button class="btn btn-sm rounded-circle" onclick="updateQty(${index}, 1)"><i class="bi bi-plus"></i></button>
+                                <div class="cart-card d-flex align-items-center bg-white p-3 mb-3 rounded-3 shadow-sm border">
+                                    <div class="cart-img-wrapper me-3"><img src="${imgSrc}" alt="${item.name}"></div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h5 class="mb-0 fw-bold">${item.name}</h5>
+                                            <span class="fw-bold">$${itemTotal.toFixed(2)}</span>
+                                        </div>
+                                        <small class="text-muted">$${priceNum.toFixed(2)} / unit</small>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <div class="qty-control d-flex align-items-center bg-light rounded-pill px-1">
+                                                <button class="btn btn-sm rounded-circle" onclick="updateQty(${index}, -1)"><i class="bi bi-dash"></i></button>
+                                                <input type="text" class="form-control-plaintext text-center fw-bold" style="width: 40px;" value="${item.qty}" readonly>
+                                                <button class="btn btn-sm rounded-circle" onclick="updateQty(${index}, 1)"><i class="bi bi-plus"></i></button>
+                                            </div>
+                                            <button class="btn btn-link text-danger text-decoration-none p-0 small" onclick="removeItem(${index})"><i class="bi bi-trash"></i> Remove</button>
+                                        </div>
+                                        ${item.qty >= maxStock ? '<small class="text-danger d-block mt-1 fw-bold" style="font-size:0.75rem">Max stock reached</small>' : ''}
                                     </div>
-                                    <button class="btn btn-link text-danger text-decoration-none p-0 small" onclick="removeItem(${index})"><i class="bi bi-trash"></i> Remove</button>
                                 </div>
-                                ${item.qty >= maxStock ? '<small class="text-danger d-block mt-1 fw-bold" style="font-size:0.75rem">Max stock reached</small>' : ''}
-                            </div>
-                        </div>
-                    `;
+                            `;
                     cartContainer.innerHTML += html;
                 });
 
@@ -162,21 +168,21 @@
                 estimatedTotal.textContent = '$' + subtotal.toFixed(2);
             }
 
-            window.updateQty = function(index, change) {
+            window.updateQty = function (index, change) {
                 let currentItem = cart[index];
                 let maxStock = products[currentItem.id] ? products[currentItem.id].stock : 100;
                 if (change === 1 && currentItem.qty >= maxStock) {
                     alert(`Sorry, only ${maxStock} units of ${currentItem.name} are available.`); return;
                 }
                 let newQty = currentItem.qty + change;
-                if (newQty < 1) return; 
+                if (newQty < 1) return;
                 cart[index].qty = newQty;
                 localStorage.setItem('farmCart', JSON.stringify(cart));
                 renderCart();
             };
 
-            window.removeItem = function(index) {
-                if(confirm("Remove this item?")) {
+            window.removeItem = function (index) {
+                if (confirm("Remove this item?")) {
                     cart.splice(index, 1);
                     localStorage.setItem('farmCart', JSON.stringify(cart));
                     renderCart();

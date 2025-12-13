@@ -190,7 +190,10 @@
         </div>
     </div>
 
-    <button id="scrollTopBtn" title="Go to top">
+    <a class="whatsapp-float-button" href="https://wa.me/6598765432" target="_blank" title="Chat with AI Agent" aria-label="Chat with AI Agent">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
         <i class="bi bi-arrow-up"></i>
     </button>
 
@@ -221,218 +224,218 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
 
-        // --- 1. User Account Logic ---
-        function updateAccountLink() {
-            const accountLink = document.getElementById("accountLink");
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const userRole = localStorage.getItem('userRole');
+            // --- 1. User Account Logic ---
+            function updateAccountLink() {
+                const accountLink = document.getElementById("accountLink");
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const userRole = localStorage.getItem('userRole');
 
-            if (accountLink) {
-                if (isLoggedIn) {
-                    accountLink.classList.remove('active');
-                    if (userRole === 'admin') {
-                        accountLink.textContent = 'Admin Panel';
-                        accountLink.href = 'admin.html';
+                if (accountLink) {
+                    if (isLoggedIn) {
+                        accountLink.classList.remove('active');
+                        if (userRole === 'admin') {
+                            accountLink.textContent = 'Admin Panel';
+                            accountLink.href = 'admin.html';
+                        } else {
+                            accountLink.textContent = 'User';
+                            accountLink.href = 'myaccount.html';
+                        }
                     } else {
-                        accountLink.textContent = 'User';
-                        accountLink.href = 'myaccount.html';
+                        accountLink.textContent = 'Account';
+                        accountLink.href = 'account.html';
+                        accountLink.classList.remove('active');
                     }
-                } else {
-                    accountLink.textContent = 'Account';
-                    accountLink.href = 'account.html';
-                    accountLink.classList.remove('active');
                 }
             }
-        }
-        updateAccountLink();
+            updateAccountLink();
 
-        // --- 2. Product Data & Selection ---
-        const produceItems = document.querySelectorAll('.produce-item');
-        const modal = document.getElementById('product-detail');
-        const closeBtn = document.getElementById('close-detail');
-        const nameEl = document.getElementById('detail-name');
-        const priceEl = document.getElementById('detail-price');
-        const descEl = document.getElementById('detail-description');
-        const qtyEl = document.getElementById('qty-number');
-        const addToCartBtn = document.querySelector('.add-cart-btn');
-        const stockText = document.getElementById("detail-stock");
+            // --- 2. Product Data & Selection ---
+            const produceItems = document.querySelectorAll('.produce-item');
+            const modal = document.getElementById('product-detail');
+            const closeBtn = document.getElementById('close-detail');
+            const nameEl = document.getElementById('detail-name');
+            const priceEl = document.getElementById('detail-price');
+            const descEl = document.getElementById('detail-description');
+            const qtyEl = document.getElementById('qty-number');
+            const addToCartBtn = document.querySelector('.add-cart-btn');
+            const stockText = document.getElementById("detail-stock");
 
-        let currentProductId = null;
-        let currentQty = 1;
+            let currentProductId = null;
+            let currentQty = 1;
 
-        // MASTER DATA Source
-        const products = {
-            1: { name: "Mizuna", price: "$2.50", stock: 0, description: ["A crisp, peppery Japanese leafy green.", "Perfect for salads and garnishes."] },
-            2: { name: "Chris Green Lettuce", price: "$2.80", stock: 10, description: ["A vibrant, tender lettuce variety.", "Sweet and crunchy."] },
-            3: { name: "Lollo Bionda Lettuce", price: "$3.20", stock: 15, description: ["Visually striking with frilly leaves.", "Adds volume to salads."] },
-            4: { name: "Cos Lettuce", price: "$3.00", stock: 12, description: ["A crisp, upright lettuce variety.", "The classic choice for Caesar salad."] },
-            5: { name: "Red Pak Choy", price: "$4.20", stock: 8, description: ["A vibrant Asian leafy green.", "Great for stir-fries."] },
-            6: { name: "Xiao Bai Cai", price: "$2.80", stock: 25, description: ["Small, tender bok choy variety.", "Cooks quickly and tastes sweet."] },
-            7: { name: "Jiu Bai Cai", price: "$3.30", stock: 18, description: ["Hardy, fast-growing vegetable.", "Versatile for soups and stir-fry."] },
-            8: { name: "Mao Bai", price: "$3.40", stock: 14, description: ["Traditional leafy cabbage variety.", "Soft texture and mild flavor."] }
-        };
+            // MASTER DATA Source
+            const products = {
+                1: { name: "Mizuna", price: "$2.50", stock: 0, description: ["A crisp, peppery Japanese leafy green.", "Perfect for salads and garnishes."] },
+                2: { name: "Chris Green Lettuce", price: "$2.80", stock: 10, description: ["A vibrant, tender lettuce variety.", "Sweet and crunchy."] },
+                3: { name: "Lollo Bionda Lettuce", price: "$3.20", stock: 15, description: ["Visually striking with frilly leaves.", "Adds volume to salads."] },
+                4: { name: "Cos Lettuce", price: "$3.00", stock: 12, description: ["A crisp, upright lettuce variety.", "The classic choice for Caesar salad."] },
+                5: { name: "Red Pak Choy", price: "$4.20", stock: 8, description: ["A vibrant Asian leafy green.", "Great for stir-fries."] },
+                6: { name: "Xiao Bai Cai", price: "$2.80", stock: 25, description: ["Small, tender bok choy variety.", "Cooks quickly and tastes sweet."] },
+                7: { name: "Jiu Bai Cai", price: "$3.30", stock: 18, description: ["Hardy, fast-growing vegetable.", "Versatile for soups and stir-fry."] },
+                8: { name: "Mao Bai", price: "$3.40", stock: 14, description: ["Traditional leafy cabbage variety.", "Soft texture and mild flavor."] }
+            };
 
-        // Open Modal Logic
-        produceItems.forEach(item => {
-            item.querySelector('.view-detail-btn').addEventListener('click', () => {
-                const id = item.dataset.id;
-                currentProductId = parseInt(id); // Ensure ID is integer
-                const product = products[id];
+            // Open Modal Logic
+            produceItems.forEach(item => {
+                item.querySelector('.view-detail-btn').addEventListener('click', () => {
+                    const id = item.dataset.id;
+                    currentProductId = parseInt(id); // Ensure ID is integer
+                    const product = products[id];
 
-                nameEl.textContent = product.name;
-                priceEl.textContent = product.price;
+                    nameEl.textContent = product.name;
+                    priceEl.textContent = product.price;
 
-                descEl.innerHTML = "";
-                product.description.forEach(line => {
-                    const li = document.createElement("li");
-                    li.textContent = line;
-                    descEl.appendChild(li);
+                    descEl.innerHTML = "";
+                    product.description.forEach(line => {
+                        const li = document.createElement("li");
+                        li.textContent = line;
+                        descEl.appendChild(li);
+                    });
+
+                    // Reset Quantity and Buttons on open
+                    currentQty = 1;
+                    qtyEl.textContent = currentQty;
+
+                    // Reset button style
+                    addToCartBtn.textContent = "Add To Cart";
+                    addToCartBtn.classList.remove('btn-dark');
+                    addToCartBtn.classList.add('btn-success');
+                    addToCartBtn.disabled = false;
+
+                    // Stock Logic
+                    if (product.stock > 0) {
+                        stockText.textContent = "Available stock: " + product.stock;
+                        stockText.classList.remove('text-danger');
+                        stockText.classList.add('text-muted');
+                    } else {
+                        stockText.textContent = "Out of Stock";
+                        stockText.classList.remove('text-muted');
+                        stockText.classList.add('text-danger');
+                        addToCartBtn.disabled = true;
+                        addToCartBtn.textContent = "Sold Out";
+                    }
+
+                    modal.classList.add("active");
                 });
-
-                // Reset Quantity and Buttons on open
-                currentQty = 1;
-                qtyEl.textContent = currentQty;
-                
-                // Reset button style
-                addToCartBtn.textContent = "Add To Cart";
-                addToCartBtn.classList.remove('btn-dark');
-                addToCartBtn.classList.add('btn-success');
-                addToCartBtn.disabled = false;
-
-                // Stock Logic
-                if (product.stock > 0) {
-                    stockText.textContent = "Available stock: " + product.stock;
-                    stockText.classList.remove('text-danger');
-                    stockText.classList.add('text-muted');
-                } else {
-                    stockText.textContent = "Out of Stock";
-                    stockText.classList.remove('text-muted');
-                    stockText.classList.add('text-danger');
-                    addToCartBtn.disabled = true;
-                    addToCartBtn.textContent = "Sold Out";
-                }
-
-                modal.classList.add("active");
             });
-        });
 
-        // Close Modal Logic
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+            // Close Modal Logic
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+            modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
 
-        // --- 3. Quantity Logic ---
-        const qtyMinus = document.getElementById("qty-minus");
-        const qtyPlus = document.getElementById("qty-plus");
+            // --- 3. Quantity Logic ---
+            const qtyMinus = document.getElementById("qty-minus");
+            const qtyPlus = document.getElementById("qty-plus");
 
-        qtyMinus.addEventListener("click", () => {
-            if (currentQty > 1) {
-                currentQty--;
-                qtyEl.textContent = currentQty;
-            }
-        });
-
-        qtyPlus.addEventListener("click", () => {
-            if (!currentProductId) return;
-            const maxStock = products[currentProductId].stock;
-
-            if (currentQty < maxStock) {
-                currentQty++;
-                qtyEl.textContent = currentQty;
-            } else {
-                // Visual feedback for hitting limit
-                qtyEl.style.color = 'red';
-                setTimeout(() => qtyEl.style.color = 'inherit', 300);
-            }
-        });
-
-        // --- 4. Add to Cart Logic (THE CRITICAL FIX) ---
-        addToCartBtn.addEventListener('click', () => {
-            if (!currentProductId) return;
-
-            const product = products[currentProductId];
-
-            // Double check current selection vs stock
-            if (currentQty > product.stock) {
-                alert("Sorry, not enough stock available.");
-                return;
-            }
-
-            // Get Current Cart
-            let cart = JSON.parse(localStorage.getItem("farmCart")) || [];
-
-            // FIND EXISTING ITEM
-            // We use findIndex to see if this product ID is already in the array
-            let existingItemIndex = cart.findIndex(item => item.id === currentProductId);
-
-            if (existingItemIndex !== -1) {
-                // ITEM EXISTS: Update Quantity
-                let newTotalQty = cart[existingItemIndex].qty + currentQty;
-                
-                // Check stock limit against the NEW total
-                if (newTotalQty > product.stock) {
-                    alert(`You already have ${cart[existingItemIndex].qty} in your cart. We only have ${product.stock} total in stock.`);
-                    return; 
-                }
-                
-                cart[existingItemIndex].qty = newTotalQty;
-
-            } else {
-                // ITEM IS NEW: Add new object to array
-                cart.push({
-                    id: currentProductId,
-                    name: product.name,
-                    price: product.price,
-                    qty: currentQty
-                });
-            }
-
-            // Save back to storage
-            localStorage.setItem("farmCart", JSON.stringify(cart));
-
-            // Visual Feedback before redirect
-            addToCartBtn.textContent = "Added!";
-            addToCartBtn.classList.remove('btn-success');
-            addToCartBtn.classList.add('btn-dark');
-
-            setTimeout(() => {
-                window.location.href = "orders.html";
-            }, 400);
-        });
-
-        // --- 5. Scroll to Top & Search ---
-        const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-        window.onscroll = function () {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        };
-
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        document.getElementById("search").addEventListener("keyup", function () {
-            const text = this.value.toLowerCase();
-            const items = document.querySelectorAll(".produce-item");
-
-            items.forEach(item => {
-                const name = item.querySelector("h5").innerText.toLowerCase();
-                if (name.includes(text)) {
-                    item.parentElement.style.display = "block"; 
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
+            qtyMinus.addEventListener("click", () => {
+                if (currentQty > 1) {
+                    currentQty--;
+                    qtyEl.textContent = currentQty;
                 }
             });
-        });
 
-    });
-</script>
+            qtyPlus.addEventListener("click", () => {
+                if (!currentProductId) return;
+                const maxStock = products[currentProductId].stock;
+
+                if (currentQty < maxStock) {
+                    currentQty++;
+                    qtyEl.textContent = currentQty;
+                } else {
+                    // Visual feedback for hitting limit
+                    qtyEl.style.color = 'red';
+                    setTimeout(() => qtyEl.style.color = 'inherit', 300);
+                }
+            });
+
+            // --- 4. Add to Cart Logic (THE CRITICAL FIX) ---
+            addToCartBtn.addEventListener('click', () => {
+                if (!currentProductId) return;
+
+                const product = products[currentProductId];
+
+                // Double check current selection vs stock
+                if (currentQty > product.stock) {
+                    alert("Sorry, not enough stock available.");
+                    return;
+                }
+
+                // Get Current Cart
+                let cart = JSON.parse(localStorage.getItem("farmCart")) || [];
+
+                // FIND EXISTING ITEM
+                // We use findIndex to see if this product ID is already in the array
+                let existingItemIndex = cart.findIndex(item => item.id === currentProductId);
+
+                if (existingItemIndex !== -1) {
+                    // ITEM EXISTS: Update Quantity
+                    let newTotalQty = cart[existingItemIndex].qty + currentQty;
+
+                    // Check stock limit against the NEW total
+                    if (newTotalQty > product.stock) {
+                        alert(`You already have ${cart[existingItemIndex].qty} in your cart. We only have ${product.stock} total in stock.`);
+                        return;
+                    }
+
+                    cart[existingItemIndex].qty = newTotalQty;
+
+                } else {
+                    // ITEM IS NEW: Add new object to array
+                    cart.push({
+                        id: currentProductId,
+                        name: product.name,
+                        price: product.price,
+                        qty: currentQty
+                    });
+                }
+
+                // Save back to storage
+                localStorage.setItem("farmCart", JSON.stringify(cart));
+
+                // Visual Feedback before redirect
+                addToCartBtn.textContent = "Added!";
+                addToCartBtn.classList.remove('btn-success');
+                addToCartBtn.classList.add('btn-dark');
+
+                setTimeout(() => {
+                    window.location.href = "orders.html";
+                }, 400);
+            });
+
+            // --- 5. Scroll to Top & Search ---
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            window.onscroll = function () {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+
+            scrollTopBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            document.getElementById("search").addEventListener("keyup", function () {
+                const text = this.value.toLowerCase();
+                const items = document.querySelectorAll(".produce-item");
+
+                items.forEach(item => {
+                    const name = item.querySelector("h5").innerText.toLowerCase();
+                    if (name.includes(text)) {
+                        item.parentElement.style.display = "block";
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+
+        });
+    </script>
 
 </body>
 

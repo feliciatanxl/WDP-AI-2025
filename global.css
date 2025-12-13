@@ -140,7 +140,7 @@ header {
 
 /* ----------------- Scroll to Top Button ----------------- */
 
-#scrollTopBtn {
+/*#scrollTopBtn {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -163,4 +163,48 @@ header {
 
     #scrollTopBtn:hover {
         background-color: #45a049;
+    }*/
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    line-height: 50px;
+    text-align: center;
+    padding: 0;
+}
+
+
+.whatsapp-float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+    .whatsapp-float-button:hover {
+        background-color: #128C7E;
     }

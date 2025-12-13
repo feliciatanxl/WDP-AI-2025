@@ -202,6 +202,10 @@
         </div>
     </main>
 
+    <a class="whatsapp-float-button" href="https://wa.me/6598765432" target="_blank" title="Chat with AI Agent" aria-label="Chat with AI Agent">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
     <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
         <i class="bi bi-arrow-up"></i>
     </button>
@@ -262,10 +266,10 @@
                 isValid = false;
             }
             if (newPass.value !== confirmPass.value) {
-                confirmPass.setCustomValidity('Passwords do not match.'); 
+                confirmPass.setCustomValidity('Passwords do not match.');
                 isValid = false;
             } else {
-                confirmPass.setCustomValidity(''); 
+                confirmPass.setCustomValidity('');
             }
 
             if (newPass.value === currentPass.value && newPass.value.length >= 8) {
