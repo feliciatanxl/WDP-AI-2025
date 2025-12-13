@@ -10,170 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="navbar.css">
-    <style>
-                        :root {
-                                    --primary-green: #2d6a4f;
-                                    --secondary-green: #52b788;
-                                    --light-green: #d8f3dc;
-                                    --accent-sage: #95d5b2;
-                                    --dark-text: #1b4332;
-                                    --light-bg: #f8fdf9;
-
-        }
-
-                        .page-content {
-                                    padding-top: 70px;
-                                    min-height: calc(100vh - 200px);
-
-        }
-
-                        .auth-card {
-                                    background: white;
-                                    border-radius: 20px;
-                                    box-shadow: 0 10px 40px rgba(45, 106, 79, 0.15);
-                                    border: none;
-                                    overflow: hidden;
-
-        }
-
-                        .nav-pills .nav-link {
-                                    color: var(--primary-green);
-                                    border-radius: 10px;
-                                    font-weight: 600;
-                                    padding: 12px;
-                                    transition: all 0.3s ease;
-
-        }
-
-                            .nav-pills .nav-link:hover {
-                                        background-color: var(--light-green);
-
-        }
-
-                            .nav-pills .nav-link.active {
-                                        background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-                                        color: white;
-
-        }
-
-                        .form-label {
-                                    color: var(--dark-text);
-                                    font-weight: 600;
-                                    font-size: 0.95rem;
-
-        }
-
-                        .form-control {
-                                    border: 2px solid var(--light-green);
-                                    border-radius: 10px;
-                                    padding: 12px 15px;
-                                    transition: all 0.3s ease;
-
-        }
-
-                            .form-control:focus {
-                                        border-color: var(--secondary-green);
-                                        box-shadow: 0 0 0 0.2rem rgba(82, 183, 136, 0.25);
-
-        }
-
-                        .btn-custom {
-                                    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-                                    border: none;
-                                    color: white;
-                                    padding: 12px;
-                                    border-radius: 10px;
-                                    font-weight: 600;
-                                    transition: all 0.3s ease;
-                                    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
-
-        }
-
-                            .btn-custom:hover {
-                                        transform: translateY(-2px);
-                                        box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
-                                        background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
-
-        }
-
-                        .btn-outline-secondary {
-                                    border: 2px solid var(--light-green);
-                                    color: var(--primary-green);
-                                    border-radius: 10px;
-                                    padding: 12px;
-                                    font-weight: 600;
-                                    transition: all 0.3s ease;
-
-        }
-
-                            .btn-outline-secondary:hover {
-                                        background-color: var(--light-green);
-                                        border-color: var(--accent-sage);
-                                        color: var(--primary-green);
-
-        }
-
-                        .form-check-input:checked {
-                                    background-color: var(--secondary-green);
-                                    border-color: var(--secondary-green);
-
-        }
-
-                        .text-muted {
-                                    color: #74a18b !important;
-
-        }
-
-                        a {
-                                    color: var(--secondary-green);
-                                    text-decoration: none;
-                                    transition: color 0.3s ease;
-
-        }
-
-                            a:hover {
-                                        color: var(--primary-green);
-
-        }
-
-                        hr {
-                                    border-color: var(--light-green);
-                                    opacity: 0.5;
-
-        }
-
-                        .display-6 {
-                                    color: var(--primary-green);
-
-        }
-
-                        @keyframes fadeInUp {
-                                    from        
-
-        {
-                                        opacity: 0;
-                                        transform: translateY(20px);
-
-        }
-
-                            to {
-                                        opacity: 1;
-                                        transform: translateY(0);
-
-        }
-
-
-
-        }
-
-                        .auth-card {
-                                    animation: fadeInUp 0.6s ease;
-
-        }
-
-
-
-    </style>
+    <link rel="stylesheet" href="account.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
@@ -198,81 +35,115 @@
 
     <main class="page-content">
         <section class="py-5">
-            <div class="container d-flex justify-content-center align-items-center">
-                <div class="row w-100 justify-content-center">
-                    <div class="col-lg-5 col-md-8">
-                        <div class="p-4 p-md-5 auth-card">
-                            <ul class="nav nav-pills nav-justified mb-4" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab">Log In</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab">Sign Up</button>
-                                </li>
-                            </ul>
+            <div class="container d-flex justify-content-center align-items-center auth-container">
+                <div class="auth-card">
+                    <div class="auth-form-side">
 
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
-                                    <form id="loginForm">
-                                        <div class="mb-3">
-                                            <h2 class="text-center mb-4 display-6 fw-bold">Welcome Back!</h2>
-                                            <p class="text-center text-muted mb-4">Log in to view your orders and personalized settings.</p>
-                                            <label for="loginEmail" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="loginEmail" name="email" required>
+                        <ul class="nav nav-pills nav-justified nav-pills-auth mb-4" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab">Sign up</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab">Log in</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-signup" role="tabpanel">
+                                <h2 class="mb-2">Sign into your account</h2>
+                                <p class="small-text subtitle">Sign up and get 1 month free trial</p>
+
+                                <form id="signupForm">
+                                    <div class="mb-3">
+                                        <label for="signupName" class="form-label">Full name</label>
+                                        <input type="text" class="form-control" id="signupName" placeholder="Enter your name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="signupEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="signupPassword" class="form-label">Password</label>
+                                        <div class="input-group-password">
+                                            <input type="password" class="form-control" id="signupPassword" placeholder="Enter your password" required>
+                                            <i class="bi bi-eye-slash toggle-password" data-target="signupPassword"></i>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="loginPassword" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="repeatPassword" class="form-label">Repeat the password</label>
+                                        <div class="input-group-password">
+                                            <input type="password" class="form-control" id="repeatPassword" placeholder="Enter your password" required>
+                                            <i class="bi bi-eye-slash toggle-password" data-target="repeatPassword"></i>
                                         </div>
+                                    </div>
 
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="rememberMeCheck">
-                                                <label class="form-check-label" for="rememberMeCheck">
-                                                    Remember Me
-                                                </label>
-                                            </div>
-                                            <a href="#" class="small">Forgot Password?</a>
-                                        </div>
+                                    <button type="submit" class="btn btn-signup-main w-100">Sign up</button>
 
-                                        <button type="submit" class="btn btn-custom w-100">Log In</button>
-
-                                        <hr class="my-4">
-                                        <button type="button" class="btn btn-outline-secondary w-100 mb-2" onclick="alert('Google login not implemented.')">
-                                            <i class="bi bi-google me-2"></i> Log in with Google
+                                    <div class="d-flex mt-3 gap-2">
+                                        <button type="button" class="btn btn-social-login flex-fill" onclick="alert('Google signup not implemented.')">
+                                            <i class="bi bi-google"></i>
                                         </button>
-                                        <button type="button" class="btn btn-outline-secondary w-100" onclick="alert('Apple login not implemented.')">
-                                            <i class="bi bi-apple me-2"></i> Log in with Apple
+                                        <button type="button" class="btn btn-social-login flex-fill" onclick="alert('Apple signup not implemented.')">
+                                            <i class="bi bi-apple"></i>
                                         </button>
-                                    </form>
-                                </div>
+                                    </div>
 
-                                <div class="tab-pane fade" id="pills-signup" role="tabpanel">
-                                    <form id="signupForm">
-                                        <div class="mb-3">
-                                            <h2 class="text-center mb-4 display-6 fw-bold">Join Us Today!</h2>
-                                            <p class="text-center text-muted mb-4">Sign up to get fresh products from our farm to your table.</p>
-                                            <label for="signupName" class="form-label">Full Name</label>
-                                            <input type="text" class="form-control" id="signupName" required>
+                                    <p class="small-text text-center mt-3">
+                                        By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                                    </p>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-login" role="tabpanel">
+                                <h2 class="mb-2">Welcome Back!</h2>
+                                <p class="small-text subtitle">Log in to view your orders and personalized settings.</p>
+
+                                <form id="loginForm">
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="loginEmail" name="email" placeholder="Enter your email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loginPassword" class="form-label">Password</label>
+                                        <div class="input-group-password">
+                                            <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Enter your password" required>
+                                            <i class="bi bi-eye-slash toggle-password" data-target="loginPassword"></i>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="signupEmail" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="signupEmail" required>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="rememberMeCheck">
+                                            <label class="form-check-label small-text" for="rememberMeCheck">
+                                                Remember Me
+                                            </label>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="signupPassword" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="signupPassword" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-custom w-100 mt-3">Sign Up</button>
-                                        <hr class="my-4">
-                                        <button type="button" class="btn btn-outline-secondary w-100 mb-2" onclick="alert('Google signup not implemented.')">
-                                            <i class="bi bi-google me-2"></i> Log in with Google
+                                        <a href="#" class="small-text">Forgot Password?</a>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-signup-main w-100">Log In</button>
+
+                                    <div class="d-flex mt-3 gap-2">
+                                        <button type="button" class="btn btn-social-login flex-fill" onclick="alert('Google login not implemented.')">
+                                            <i class="bi bi-google"></i>
                                         </button>
-                                        <button type="button" class="btn btn-outline-secondary w-100" onclick="alert('Apple signup not implemented.')">
-                                            <i class="bi bi-apple me-2"></i> Log in with Apple
+                                        <button type="button" class="btn btn-social-login flex-fill" onclick="alert('Apple login not implemented.')">
+                                            <i class="bi bi-apple"></i>
                                         </button>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-image-side d-none d-md-flex">
+                        <div class="image-overlay"></div>
+                        <div class="testimonial-content d-flex flex-column align-items-end" style="position: relative; z-index: 2;">
+                            <div class="testimonial-box">
+                                <p class="mb-2 small-text" style="color: white; line-height: 1.4;">
+                                    Knowly has transformed the way I learn! The courses are well-structured, engaging, and easy to follow. I highly recommend it for anyone looking to upskill!
+                                </p>
+                                <p class="mb-0 small-text fw-bold">Koushik - UI/UX Designer</p>
                             </div>
                         </div>
                     </div>
@@ -313,7 +184,6 @@
     <script>
         function updateAccountLink() {
             const accountLink = document.getElementById("accountLink");
-
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('userRole');
 
@@ -329,7 +199,7 @@
                         accountLink.textContent = 'Admin Panel';
                         accountLink.href = 'admin.html';
                     } else {
-                        accountLink.textContent = 'My Account'; 
+                        accountLink.textContent = 'My Account';
                         accountLink.href = 'myaccount.html';
                     }
                 } else {
@@ -402,12 +272,38 @@
 
         document.getElementById('signupForm').addEventListener('submit', function (e) {
             e.preventDefault();
+
+            // Simple password match validation (added for user experience)
+            const password = document.getElementById('signupPassword').value;
+            const repeatPassword = document.getElementById('repeatPassword').value;
+
+            if (password !== repeatPassword) {
+                alert('Sign Up Failed: Passwords do not match.');
+                return;
+            }
+
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userRole', 'user');
             window.location.href = 'myaccount.html';
         });
 
         document.addEventListener('DOMContentLoaded', loadSavedCredentials);
+
+        // Functionality to toggle password visibility (based on the eye icon in the screenshot)
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+
+                // Toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle the icon
+                this.classList.toggle('bi-eye');
+                this.classList.toggle('bi-eye-slash');
+            });
+        });
     </script>
 </body>
 </html>
