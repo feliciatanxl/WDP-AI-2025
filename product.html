@@ -59,10 +59,11 @@
 
                 <h6 class="fw-bold mb-2">PRODUCT CATEGORIES</h6>
                 <ul class="product-category-list">
-                    <li><a href="#">Leafy Greens</a></li>
-                    <li><a href="#">Lettuce</a></li>
-                    <li><a href="#">Chinese Vegetables</a></li>
-                    <li><a href="#">Organic Produce</a></li>
+
+                    <li><a href="#" data-category="all">All</a></li>
+                    <li><a href="#" data-category="leafy">Leafy Greens</a></li>
+                    <li><a href="#" data-category="lettuce">Lettuce</a></li>
+                    <li><a href="#" data-category="chinese">Chinese Vegetables</a></li>
                     <li><a href="#">Bundles</a></li>
                 </ul>
 
@@ -71,7 +72,7 @@
             <div class="col-md-9">
                 <div class="row g-4">
 
-                    <div class="col-md-4 produce-item" data-id="1">
+                    <div class="col-md-4 produce-item" data-id="1" data-category="leafy">
                         <div class="card shadow-sm">
                             <img src="image/mizuna.png" alt="Mizuna">
                             <div class="card-body">
@@ -82,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="2">
+                    <div class="col-md-4 produce-item" data-id="2" data-category="lettuce">
                         <div class="card shadow-sm">
                             <img src="image/chrisgreenlettuce.jpg" alt="Chris Green Lettuce">
                             <div class="card-body">
@@ -93,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="3">
+                    <div class="col-md-4 produce-item" data-id="3" data-category="lettuce">
                         <div class="card shadow-sm">
                             <img src="image/lollo_bionda_lettuce.jpg" alt="Lollo Bionda Lettuce">
                             <div class="card-body">
@@ -104,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="4">
+                    <div class="col-md-4 produce-item" data-id="4" data-category="lettuce">
                         <div class="card shadow-sm">
                             <img src="image/cos_lettuce.jpg" alt="Cos Lettuce">
                             <div class="card-body">
@@ -115,7 +116,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="5">
+                    <div class="col-md-4 produce-item" data-id="5" data-category="chinese">
                         <div class="card shadow-sm">
                             <img src="image/red_pak_choy.jpg" alt="Red Pak Choy">
                             <div class="card-body">
@@ -126,7 +127,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="6">
+                    <div class="col-md-4 produce-item" data-id="6" data-category="chinese">
                         <div class="card shadow-sm">
                             <img src="image/xiaobaicai.jpg" alt="Xiao Bai Cai">
                             <div class="card-body">
@@ -137,7 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="7">
+                    <div class="col-md-4 produce-item" data-id="7" data-category="chinese">
                         <div class="card shadow-sm">
                             <img src="image/jiubaicai.jpg" alt="Jiu Bai Cai">
                             <div class="card-body">
@@ -148,7 +149,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 produce-item" data-id="8">
+                    <div class="col-md-4 produce-item" data-id="8" data-category="chinese">
                         <div class="card shadow-sm">
                             <img src="image/maobai.jpg" alt="Mao Bai">
                             <div class="card-body">
@@ -190,10 +191,7 @@
         </div>
     </div>
 
-    <a class="whatsapp-float-button" href="https://wa.me/6598765432" target="_blank" title="Chat with AI Agent" aria-label="Chat with AI Agent">
-        <i class="bi bi-whatsapp"></i>
-    </a>
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to Top">
+    <button id="scrollTopBtn" title="Go to top">
         <i class="bi bi-arrow-up"></i>
     </button>
 
@@ -428,8 +426,34 @@
                     item.style.display = name.includes(text) ? "" : "none";
                 });
             });
+
+        });
+
+        // --- CATEGORY FILTER ---
+        const categoryLinks = document.querySelectorAll(".product-category-list a");
+
+        categoryLinks.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+
+                const selectedCategory = link.dataset.category;
+                const items = document.querySelectorAll(".produce-item");
+
+                items.forEach(item => {
+                    if (selectedCategory === "all" || item.dataset.category === selectedCategory) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
                 });
-          
+
+                // Optional active state
+                categoryLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+
     </script>
 
 </body>
